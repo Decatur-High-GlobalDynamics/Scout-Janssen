@@ -1,5 +1,6 @@
  
 		<?php
+			header("Access-Control-Allow-Origin: *");
 			$password = getenv("DBPASS");
 			$database = new mysqli("localhost", "pi", $password, "scout_janssen");
 			if ($database->connect_error) {
