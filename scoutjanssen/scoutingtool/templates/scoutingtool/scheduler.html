@@ -1,0 +1,49 @@
+<head>
+	<script src="js/navBar.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="css/scheduler.css">
+	<script src="js/scheduler.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli|Public+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="mySidebar" class="sidebar">
+		<center><img id="gdlogoinsidebar" src="images/GD_LOGO_MINI.png" width="100em"/></center>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="form.html">Scouting Form</a>
+		<a href="scheduler.html">Schedule</a>
+		<a href="teamsComp.html">Matches</a>
+		<a href="#">Statistics</a>
+		<a href="#">Contact</a>
+	</div>
+	<div class="openbtn" onclick="openNav()">
+		<center><img src="images/menuhamburg.png" width="90%" height="90%" style=""/></center>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div>
+		<p style="margin-left: 1vw; margin-top: 1vw;">format = {match number:robot}</p>
+		<p style="margin-left: 0.5vw; margin-top: 1vw;">*This page is temporary, but I don't have time to make it better.</p>
+	</div>
+
+	<div class="container">
+		<div class="row">
+		  <div class="col-xs-12">
+			<div class="table-responsive" data-pattern="priority-columns">
+			  <table summary="" class="table table-bordered table-hover">
+				<caption class="text-center">Scouting Schedule:</caption>
+				<thead>
+				  <tr>
+					<th>Scouter</th>
+					<th data-priority="1">Matches</th>
+				  </tr>
+				</thead>
+				<tbody>
+				</tbody>
+			  </table>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</body>

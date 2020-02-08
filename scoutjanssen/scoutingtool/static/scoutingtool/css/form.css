@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap");
+
+#popupframe {
+	font-family: 'Rubik', sans-serif;
+	font-size: 1.4vw;
+	z-index: 100;
+	opacity: 0.9;
+	background-color: dodgerblue;
+	position: absolute;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	top: 20vw;
+	left: 30vw;
+	right: 30vw;
+}
+
+#linebreak {
+	padding-top: 2.2vw;
+	background-color: rgb(50,50,50);
+}
+
+.row {
+	font-size: 1.3vw;
+}
+
+h3 {
+	font-size: 1.1vw;
+}
+
+input, select {
+	font-size: 0.9vw;
+}
+
+.vmenu {
+	width: 14%;
+}
+
+body {
+	background: white;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.quickselect_matches {
+	color: white !important;
+	overflow: visible;
+	cursor: pointer;
+}

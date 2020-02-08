@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/pages.css' %}'>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/form.css' %}'>
+	<script src='{% static 'scoutingtool/js/shortcuts.js' %}'></script>
+	<script src='{% static 'scoutingtool/js/timers.js' %}'></script>
+	<script src='{% static 'scoutingtool/js/cartesian.js' %}'></script>
+	<script src='{% static 'scoutingtool/js/notesform.js' %}'></script>
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="popupframe">
+	</div>
+	<form name="form" action="saveReport.php" onsubmit="fixTheStuff()" method="post" id="report">
+		
+		<div class="timer darkgrey">
+			<div class="table-wrapper" position="center">
+				<table class="fl-table">
+					<thead>
+						<tr>
+							<th>Time on Defense (1)</th>
+							<th>Time Inoperable (2)</th>
+							<th>Defense on Bot 1 (3)</th>
+							<th>Defense on Bot 2 (4)</th>
+							<th>Defense on Bot 3 (5)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><span id="tiempo0"></span><input type="hidden" name="timeOnDefense" class="timerbold" id="timer0" value="0.0">0</input></td>
+							<td><span id="tiempo4"></span><input type="hidden" name="timeBroke" class="timerbold" id="timer4" value="0.0">0</input></td>
+							<td><span id="tiempo1"></span><input type="hidden" name="timeOnBot1" class="timerbold" id="timer1" value="0.0">0</input></td>
+							<td><span id="tiempo2"></span><input type="hidden" name="timeOnBot2" class="timerbold" id="timer2" value="0.0">0</input></td>
+							<td><span id="tiempo3"></span><input type="hidden" name="timeOnBot3" class="timerbold" id="timer3" value="0.0">0</input></td>
+						</tr>
+					<tbody>
+				</table>
+			</div>
+		</div>
+		<div class="column data vmenu" id="matchSelect" style="">
+			<ul>Quickselect:</ul>
+		</div>
+		<div class="data column">
+			<h1>Before match:</h1>
+			<div id="climb">
+				<h3>
+					Match number:
+					<input type="text" name="matchNumber" value="{{match}}">
+				</h3>
+				<h3>
+				Team number:
+				</h3>
+				<select name="teamNumber" form="report" id="teamNumber">
+					<option value="" selected="selected" id="team1"></option>
+					<option value="" id="team2"></option>
+					<option value="" id="team3"></option>
+					<option value="" id="team4"></option>
+					<option value="" id="team5"></option>
+					<option value="" id="team6"></option>
+				</select>
+				<h3>
+				Type of match:
+				</h3>
+				<select name="compLevel" form="report">
+					<option value="qm" selected="selected">Qualifiying match</option>
+					<option value="ef">Round of 16</option>
+					<option value="qf">Quarter finals</option>
+					<option value="sf">Semi finals</option>
+					<option value="f">Finals</option>
+				</select>
+				<h3>
+					Bot position:
+					<input type="text" name="position" id="botpos">
+				</h3>
+				<h3>
+					Set number (N/A in Qualifiers. Keep 1.):
+					<input type="text" name="setNumber" id="setNumber" value="1">
+				</h3>
+			</div>
+		</div>
+		<div class="data column">
+			<div id="teamdata">
+				
+				<h1>Team Auto:</h1>
+				<div id="teamauto" class="auto">
+					<h3>
+						Lower Cells scored: (q)
+						<input type="text" id="q" name="" value="0">
+					</h3>
+					<h3>
+						Lower Cells missed: (w)
+						<input type="text" id="w" name="" value="0">
+					</h3>
+					<h3>
+						Higher Cells made: (a)
+						<input type="text" id="a" name="" value="0">
+					</h3>
+					<h3>
+						Higher Cells missed: (s)
+						<input type="text" id="s" name="" value="0">
+					</h3>
+				</div>
+			</div>
+		</div>
+		<div class="data column">
+			<div id="teamteleop" class="auto">
+				<h1>Team Teleop:</h1>
+				<h3>
+					Lower Cells scored: (e)
+					<input type="text" id="e" name="" value="0">
+				</h3>
+				<h3>
+					Lower Cells missed: (r)
+					<input type="text" id="r" name="" value="0">
+				</h3>
+				<h3>
+					Higher Cells made: (d)
+					<input type="text" id="d" name="" value="0">
+				</h3>
+				<h3>
+					Higher Cells missed: (f)
+					<input type="text" id="f" name="" value="0">
+				</h3>
+				<h3>
+					<input type="checkbox" name="">Position control<br>
+					<input type="checkbox" name="">Rotation control
+				</h3>
+			</div>
+		</div>
+		<div class="data column">
+			<h1>Endgame:</h1>
+			<div id="climb">
+				<h3>
+					<input type="checkbox" name="climb">Climb<br>
+					<input type="checkbox" name="climb">Can Rebalance
+				</h3>
+			</div>
+			<div id="climbassist">
+				<h3>
+					How many assisted:
+					<input type="text" name="climbAssistCount" value="0" />
+				</h3>
+			</div>
+		</div>
+		<div id="notes" class="row column">
+			<input type="checkbox" name="s">Bot can 3pt consistently<br>
+			<input type="checkbox" name="mechanicalIssues">Mechanical issues<br>
+			<input type="checkbox" name="connectionIssues">Connection issues<br>
+			<h3>Offensive penalties <input type="text" name="offensivePenalties" value="0"></h3>
+			<h3>Defensive penalties <input type="text" name="defensivePenalties" value="0"></h3>
+			Additional Notes: <input type="text" name="notes" value="" style="margin-top: 1vw;"><br>
+			<input type="submit" value="Submit Scouting" style="margin-top: 0.5vw;">
+		</div>
+		
+	</form>
+</body>
+</html>

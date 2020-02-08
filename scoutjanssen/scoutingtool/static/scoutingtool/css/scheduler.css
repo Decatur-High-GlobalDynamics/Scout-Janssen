@@ -1,0 +1,62 @@
+h2 {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .table-bordered {
+    border: 1px solid #ddd !important;
+  }
+  
+  table caption {
+      padding: .5em 0;
+  }
+  
+  @media screen and (max-width: 767px) {
+    table caption {
+      display: none;
+    }
+  }
+  
+  .p {
+    text-align: center;
+    padding-top: 140px;
+    font-size: 14px;
+  }
+td.bordered {
+    text-decoration: underline;
+}
+p, tr{ 
+    font-family: 'Public Sans', sans-serif;
+}
+td, caption { 
+    font-family: 'Muli', sans-serif;
+}
+
+#navbar {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    font-size: 1.1vw;
+    font-family: 'Francois One', sans-serif;
+    position: relative;
+    background-color: lightgrey;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+.ne {
+    padding-left: 1em;
+    padding-right: 1em;
+} 
+a:visited, a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.darkGrey {
+    background-color: rgb(150, 150, 150);
+}
+
+.lightGrey {
+    background-color: rgb(200, 200, 200);
+}
