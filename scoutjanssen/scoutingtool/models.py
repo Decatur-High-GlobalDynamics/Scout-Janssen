@@ -37,8 +37,8 @@ class Match(models.Model):
     team6 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches6')
     
 class Report(models.Model):
+    code = models.CharField(primary_key = True, max_length=100)
     scouter = models.CharField(max_length=20);
-    last_modified = models.TimeField(auto_now=False, auto_now_add=False)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     onePointMadeTele = models.PositiveIntegerField(default = 0)

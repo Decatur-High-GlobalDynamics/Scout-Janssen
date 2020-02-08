@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import ScoutingForm
 # Create your views here.
@@ -12,11 +12,9 @@ def newform(request, match):
     context = {
         'match' : match,
         'form' : scouting_form,
-        }
     }
     return render(request, 'scoutingtool/form.html', context);
 
-@require_POST
 def submitReport(request):
     form = ScoutingForm(request.POST)
     if form.is_valid():

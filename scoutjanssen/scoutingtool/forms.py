@@ -1,12 +1,7 @@
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, Form
 from .models import Report
 
 class ScoutingForm(ModelForm):
     class Meta:
         model = Report
-        fields = ['__all__']
-        exclude = ['last_modified']
-        widgets = {
-        'text' : forms.TextInput(
-            
-        )
+        fields = ['scouter']

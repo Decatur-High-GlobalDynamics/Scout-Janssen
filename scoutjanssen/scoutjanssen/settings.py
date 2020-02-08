@@ -24,7 +24,7 @@ SECRET_KEY = 'whz=(u&sk^t^_8@3#evfvb78(8l2c(b7+_6xis0rkz!50dj-%@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['FRC4026.COM', '3.211.240.197', 'localhost']
 
 
 # Application definition
