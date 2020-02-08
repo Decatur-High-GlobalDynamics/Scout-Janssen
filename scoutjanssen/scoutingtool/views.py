@@ -7,8 +7,13 @@ def form(request, match):
     context = {'match': match}
     return render(request, 'scoutingtool/form.html', context);
 
+def schedule(request, id=0):
+    context = {'id': id}
+    return render(request, 'scoutingtool/scheduler.html', context)
+
 def newform(request, match):
-    scouting_form = ScoutingForm()
+
+    scouting_form = ScoutingForm(initial={'notes': ''})
     context = {
         'match' : match,
         'form' : scouting_form,
@@ -16,8 +21,17 @@ def newform(request, match):
     return render(request, 'scoutingtool/form.html', context);
 
 def submitReport(request):
-    form = ScoutingForm(request.POST)
-    if form.is_valid():
-        new_form = ScoutingForm.save()
+    if(request.method == 'POST'):
+        form = ScoutingForm(request.POST)
+        if form.is_valid():
+            s = form.save()
+            data = Report.objects.all()
 
-    return redirect('index')
+            return render(request, 'scoutingtool/displaytestdata.html', {
+                'data':data
+            })
+    else:
+        form_class = ScoutingForm   
+    return render(request, 'scoutingtool/newform.html', {
+        'form': form_class,
+    })

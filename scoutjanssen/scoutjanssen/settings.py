@@ -26,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['FRC4026.COM', '3.211.240.197', 'localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [

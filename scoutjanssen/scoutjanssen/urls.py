@@ -19,5 +19,4 @@ from django.urls import include, path
 urlpatterns = [
     path('scout/', include('scoutingtool.urls')),
     path('admin/', admin.site.urls),
-    path('', admin.site.urls)
 ]
