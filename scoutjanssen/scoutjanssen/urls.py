@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from scoutingtool import views as scoutview
 
 urlpatterns = [
     path('scout/', include('scoutingtool.urls')),
     path('admin/', admin.site.urls),
+    path('', scoutview.submitReport, name='submitReport'),
 ]
