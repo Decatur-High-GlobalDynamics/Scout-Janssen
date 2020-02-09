@@ -35,12 +35,15 @@ class Match(models.Model):
     team4 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches4')
     team5 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches5')
     team6 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches6')
+    def __str__(self):
+        return self.pk
     
 class Report(models.Model):
-    code = models.CharField(primary_key = True, max_length=100)
-    scouter = models.CharField(max_length=20);
+    
+    scouter = models.CharField(blank = True, max_length=20);
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, on_delete=models.CASCADE,)
+    initiationLine = models.BooleanField()
     onePointMadeTele = models.PositiveIntegerField(default = 0)
     onePointMissedTele = models.PositiveIntegerField(default = 0)
     twoPointMadeTele = models.PositiveIntegerField(default = 0)
@@ -50,17 +53,16 @@ class Report(models.Model):
     climb = models.BooleanField(default = False)
     climbAssist = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(2)])
     balanceResponsibility = models.BooleanField(default = False)
-    initiationLine = models.BooleanField()
     onePointMadeAuto = models.PositiveIntegerField(default = 0)
     onePointMissedAuto = models.PositiveIntegerField(default = 0)
     twoPointMadeAuto = models.PositiveIntegerField(default = 0)
     twoPointMissedAuto = models.PositiveIntegerField(default = 0)
-    timeOnDefense = models.FloatField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
-    bot1Defense = models.FloatField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
-    bot2Defense = models.FloatField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
-    bot3Defense = models.FloatField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
-    timeInoperable = models.FloatField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
-    notes = models.TextField(max_length=100000, null=True)
+    timeOnDefense = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
+    bot1Defense = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
+    bot2Defense = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
+    bot3Defense = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
+    timeInoperable = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
+    notes = models.TextField(blank = True, max_length=100000, null=True)
     estimate3pt = models.PositiveIntegerField(default = 0)
 
     def __str__(self):

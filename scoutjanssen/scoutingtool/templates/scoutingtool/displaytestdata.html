@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ModelForm Tutorial</title>
+    <title>All Match Reports</title>
 </head>
 <body>
-<h2>All User Details</h2>
+<h2>Match Reports</h2>
 <table>
     {% for item in data %}
     <tr>
-        <td><b>Title:</b>{{ item.scouter }}</td>
+        <td><b>Id:</b>{{ item.pk }}</td>
+        <td><b>Scouter:</b>{{ item.scouter }}</td>
+        <td><b>Team:</b>{{ item.team }}</td>
+        <td><b>Match:</b>{{ item.match }}</td>
     </tr>
     <tr>
     <td colspan="2" class="divider"><hr/></td>

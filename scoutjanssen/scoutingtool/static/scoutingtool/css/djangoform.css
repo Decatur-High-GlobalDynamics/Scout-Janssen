@@ -1,0 +1,30 @@
+p {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+input, label {
+    display:block;
+}
+.forminputwrapper {
+    width: 75%;
+}
+.endgame {
+}
+#scoutbox {
+    margin: 0% 5% 0% 5%;
+    padding: 20px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    background-color: #c5c6c7;
+    border-radius: 20px;
+    color: #1f2833;
+}
+body {
+    background-color: #0b0c10;
+}
+
+h1 {
+    color: #66fcf1
+}

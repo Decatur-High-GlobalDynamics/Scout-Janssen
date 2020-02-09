@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import ScoutingForm
+from django.db import models
+from .forms import ScoutingForm, ScouterForm
 # Create your views here.
 
 def form(request, match):
@@ -21,17 +22,45 @@ def newform(request, match):
     return render(request, 'scoutingtool/form.html', context);
 
 def submitReport(request):
-    if(request.method == 'POST'):
-        form = ScoutingForm(request.POST)
-        if form.is_valid():
-            s = form.save()
-            data = Report.objects.all()
-
-            return render(request, 'scoutingtool/displaytestdata.html', {
-                'data':data
-            })
+    form_class = ScoutingForm
+    if "scouter_id" in request.COOKIES:
+        if(request.method == 'POST'):
+            form = ScoutingForm(request.POST)
+            if form.is_valid():
+                s = form.save(commit=False)
+                s.scouter = request.COOKIES["scouter_id"]
+                s = form.save()
+                data = Report.objects.all()
+                return render(request, 'scoutingtool/displaytestdata.html', {
+                    'data':data,
+                })
+            else:
+                return render(request, 'scoutingtool/newform.html', {'form': form,})
+        else:
+            return render(request, 'scoutingtool/newform.html', {'form': form_class,})
     else:
-        form_class = ScoutingForm   
-    return render(request, 'scoutingtool/newform.html', {
-        'form': form_class,
-    })
+        return redirect('scouter')
+
+
+def scouter(request):
+    form = ScouterForm()
+    if "scouter_id" in request.COOKIES:
+        response = render(request, 'scoutingtool/selectScout.html', {
+            'scouter_id': "true",
+        })
+    else:
+        response = render(request, 'scoutingtool/selectScout.html', {
+            'scouter_id': "false",
+        })
+    if(request.method == 'POST'):
+        form = ScouterForm(request.POST)
+        if form.is_valid():
+            new_scouter_id = request.POST.get('scouter_id', '')
+            response = redirect('submitReport')
+            response.set_cookie(key='scouter_id', value=new_scouter_id)
+            return response
+        else:
+            return render(request, 'scoutingtool/selectScout.html', {})
+    else:
+        return response
+        

@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Select Scouter</title>
+</head>
+<body>
+    {% if scouter_id == "true" %}
+        <p>Scouter id already set</p>
+    {% endif %}
+    <form action="" method="post">
+    {% csrf_token %}
+        <label for="scouter_id">Your name: </label>
+        <input id="scouter_id" type="text" name="scouter_id" maxlength="20" required>
+        {{form.scouter_id}}
+        <input type="submit" value="OK">
+    </form>
+<body>
+</html>

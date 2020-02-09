@@ -1,18 +1,122 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/pages.css' %}'>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/form.css' %}'>
+    <link rel="stylesheet" href='{% static 'scoutingtool/css/djangoform.css' %}'>
+	<script src='{% static 'scoutingtool/js/shortcuts.js' %}'></script>
+	<script src='{% static 'scoutingtool/js/cartesian.js' %}'></script>
+	<script src='{% static 'scoutingtool/js/notesform.js' %}'></script>
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Django Forms Tutorial</title>
+    <title>Form</title>
 </head>
 <body>
-<h2>Django Forms Tutorial</h2>
+
+<center><h1>SCOUTING FORM PROTOTYPE</h1></center>
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
 
 <form action="" method="post">
     {% csrf_token %}
-    <table>
-    {{form.as_table}}
+    <div id="scoutbox">
+        <div class="prematch">
+            <div class="forminputwrapper">
+                <label for="{{form.match.id_for_label}}">Match: </label>
+                {{form.match}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.team.id_for_label}}">Team: </label>
+                {{form.team}}
+            </div>
 
- </table>
+        </div>
+        <div class="auto">
+            <div class="forminputwrapper">
+                <label for="{{form.initiationLine.id_for_label}}">Did they cross the initiation line?</label>
+                {{form.initiationLine}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMadeAuto.id_for_label}}">Low Cells made in auto: </label>
+                {{form.onePointMadeAuto}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMissedAuto.id_for_label}}">Low Cells missed in auto: </label>
+                {{form.onePointMissedAuto}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMadeAuto.id_for_label}}">High Cells made in auto: </label>
+                {{form.twoPointMadeAuto}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMissedAuto.id_for_label}}">High Cells missed in auto: </label>
+                {{form.twoPointMissedAuto}}
+            </div>
+        </div>
+        <div class="teleop">
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMadeTele.id_for_label}}"> Low Cells made in teleop: </label>
+                {{form.onePointMadeTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMissedTele.id_for_label}}">Low Cells missed in teleop: </label>
+                {{form.onePointMissedTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMadeTele.id_for_label}}">High Cells made in teleop: </label>
+                {{form.twoPointMadeTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMissedTele.id_for_label}}">High Cells missed in teleop: </label>
+                {{form.twoPointMissedTele}}
+            </div>
+        </div>
+        <div class="endgame">
+            <div class="forminputwrapper">
+                <label for="{{form.wheelTurn.id_for_label}}">Can they pull the handle to spin the wheel?</label>
+                {{form.wheelTurn}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.wheelColor.id_for_label}}">Can they stop on a specific color?</label>
+                {{form.wheelColor}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.climb.id_for_label}}">Can they climb?</label>
+                {{form.climb}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.climbAssist.id_for_label}}">How many robots did they assist climbing?</label>
+                {{form.climbAssist}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.balanceResponsibility.id_for_label}}">Could they balance?</label>
+                {{form.balanceResponsibility}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.estimate3pt.id_for_label}}">Roughly estimate their 3 point scores</label>
+                {{form.estimate3pt}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.notes.id_for_label}}">Notes</label>
+                {{form.notes}}
+            </div>
+        </div>
+    </div>
 <input type="submit" value="Submit" />
 </form>
 </body>

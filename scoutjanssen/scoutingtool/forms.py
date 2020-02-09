@@ -1,7 +1,7 @@
-from django.forms import ModelForm, TextInput, Form
+from django import forms
 from .models import Report
 
-class ScoutingForm(ModelForm):
+class ScoutingForm(forms.ModelForm):
     class Meta:
         model = Report
         fields = [
@@ -31,3 +31,6 @@ class ScoutingForm(ModelForm):
             'estimate3pt'
             
             ]
+
+class ScouterForm(forms.Form):
+    scouter_id = forms.CharField(label='scouter_id', max_length=20)
