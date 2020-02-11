@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from scoutjanssen import settings
 
 class Event(models.Model):
     code = models.CharField(primary_key = True, max_length=100)
@@ -9,13 +10,13 @@ class Event(models.Model):
     year = models.IntegerField()
 
     def __str__(self):
-        return self.name + " " + self.year
+        return self.name + " " + str(self.year)
 
 class Team(models.Model):
     code = models.CharField(primary_key = True, max_length=100)
     number = models.IntegerField()
     name = models.CharField(max_length = 1000)
-    events = models.ManyToManyField(Event, related_name='teams')
+    events = models.ManyToManyField(Event, related_name='teams', blank = True,)
 
     def __str__(self):
         return "Team " + self.number + ": " + self.name
