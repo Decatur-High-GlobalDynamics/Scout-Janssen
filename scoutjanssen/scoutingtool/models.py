@@ -1,25 +1,22 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from scoutjanssen import settings
 
 class Event(models.Model):
-    code = models.CharField(primary_key = True, max_length=100)
-    name = models.CharField(max_length = 1000)
+    name = models.CharField(max_length = 1000, primary_key = True)
     start_date = models.DateField()
     end_date = models.DateField()
     year = models.IntegerField()
 
     def __str__(self):
-        return self.name + " " + str(self.year)
+        return self.name + " " + self.year
 
 class Team(models.Model):
-    code = models.CharField(primary_key = True, max_length=100)
-    number = models.IntegerField()
+    number = models.IntegerField(primary_key = True)
     name = models.CharField(max_length = 1000)
-    events = models.ManyToManyField(Event, related_name='teams', blank = True,)
+    events = models.ManyToManyField(Event, related_name='teams')
 
     def __str__(self):
-        return "Team " + self.number + ": " + self.name
+        return "Team " + str(self.number) + ": " + self.name
     def __matches(self):
         return self.matches1 | self.matches2 | self.matches3 | self.matches4 | self.matches5 | self.matches6
 
@@ -27,8 +24,8 @@ class Team(models.Model):
 
 
 
-class Match(models.Model):
-    code = models.CharField(primary_key = True, max_length=100)
+class Match(models.Model): 
+    number = models.IntegerField()
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     team1 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches1')
     team2 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches2')
@@ -37,7 +34,7 @@ class Match(models.Model):
     team5 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches5')
     team6 = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='matches6')
     def __str__(self):
-        return self.pk
+        return str(self.number)
     
 class Report(models.Model):
     
