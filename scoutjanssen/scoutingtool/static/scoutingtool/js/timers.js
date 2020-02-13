@@ -39,7 +39,7 @@
 
 
   function doTheTimerStuff(keyCode){
-    timeInterval = 250;
+    timeInterval = 10;
     timeIncrements = timeInterval/1000;
     switch(keyCode){
       case 49:
