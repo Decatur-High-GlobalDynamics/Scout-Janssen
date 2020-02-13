@@ -9,9 +9,7 @@
     T: 84
     */
     if(document.activeElement.tagName != "INPUT"){
-
       doTheTimerStuff(e.which);
-      shortcut(e.which);
     }
   }
   onkeyup = function(e){
@@ -58,7 +56,7 @@
         }
         break;
       case 51:
-        timer1Div = document.getElementById("timer1");
+        timer1Div = document.getElementById("timer4");
         if(timer1Loop == undefined) timer1Loop = setInterval(function(){
           timerFor1 = timerFor1 + timeIncrements;
           timer1Div.innerHTML = (timerFor1 / 1).toFixed(2);
@@ -88,7 +86,7 @@
         } else {
           clearInterval(timer0Loop);
           timer0Loop = undefined;
-          var timerElement4 = document.getElementById("timer4");
+          var timerElement4 = document.getElementById("timer1");
           timer4Loop = setInterval(function(){
             timerFor4 = timerFor4 + timeIncrements;
             timerElement4.innerHTML = (timerFor4 / 1).toFixed(2);
@@ -127,10 +125,15 @@
 else{
   timer()
 }*/
-setInterval(function(){for(var i = 0; i < 5; i++){document.getElementById("timer" + i).value = document.getElementById("timer" + i).innerText; document.getElementById("tiempo" + i).innerText = document.getElementById("timer" + i).innerText;}}, 100);
+setInterval(function(){
+  for(var i = 0; i < 2; i++){
+    //document.getElementById("timer" + i).value = document.getElementById("timer" + i).innerText; 
+    document.getElementById("tiempo" + i).innerText = document.getElementById("timer" + i).innerText;
+  }
+}, 100);
 
 function fixTheStuff(){
-  for(var i = 0; i < 5; i++){
+  for(var i = 0; i < 2; i++){
     if(document.getElementById("timer" + i).value == ""){
       document.getElementById("timer" + i).value = "0.0";
     }

@@ -20,5 +20,6 @@ from scoutingtool import views as scoutview
 urlpatterns = [
     path('scout/', include('scoutingtool.urls')),
     path('admin/', admin.site.urls),
+    path('schedule/', scoutview.schedule, name="schedule"),
     path('', scoutview.submitReport, name='submitReport'),
 ]

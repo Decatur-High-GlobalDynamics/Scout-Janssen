@@ -12,7 +12,7 @@ input, label {
     display:block;
 }
 .forminputwrapper {
-    width: 75%;
+    width: 90%;
 }
 .endgame {
 }
@@ -22,7 +22,7 @@ input, label {
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
-    background-color: #c5c6c7;
+    background-color: white;
     border-radius: 20px;
     color: #1f2833;
 }
@@ -36,5 +36,50 @@ h1 {
 }
 
 body {
-    font-family: 'Heebo-Medium', Fallback, sans-serif !important
+    font-family: 'Heebo-Medium', Fallback, sans-serif !important;
+    background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-size: 62,5%;
+}
+
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  background-color: rgb(214, 214, 214);
+  border: none;
+  width: 100%;
+  display: block;
+  padding-top: 0.2rem;
+  padding-left: 0.4rem;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.checkbox input {
+    width: 1vw;
+}
+
+input:placeholder-shown + label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
 }

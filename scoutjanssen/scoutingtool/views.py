@@ -6,13 +6,8 @@ import datetime
 import requests
 
 # Create your views here.
-
-def form(request, match):
-    context = {'match': match}
-    return render(request, 'scoutingtool/form.html', context);
-
-def schedule(request, id=0):
-    context = {'id': id}
+def schedule(request):
+    context = {'scouter': request.COOKIES["scouter_id"]}
     return render(request, 'scoutingtool/scheduler.html', context)
 
 def newform(request, match):
@@ -80,6 +75,8 @@ def syncDb(request):
     for i in range(len(data)):
         number = (data[i]['team_number'])
         name = (data[i]['nickname'])
+        if(len(name) > 10):
+            name = (name[0:15] + "...") 
         p = Team(number = number, name = name,)
         #p.events.add("GRITS")
         p.save()
