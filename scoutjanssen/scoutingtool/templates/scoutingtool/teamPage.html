@@ -2,29 +2,89 @@
 
 <html>
 <head>
+<style>
+body {
+  background-color: #192a54;
+}
+th, td {
+    color: #ffffff;
 
+    text-align:center;
+}
+td {
+    padding-left:2.5vw;
+    padding-right:2.5vw; 
+}
+th {
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid white;
+}
+</style>
 </head>
 <body>
+<div style="overflow-x:auto">
     <table>
         <tr>
             <th>Scouter</th>
+            <th>Team Number</th>
             <th>Match</th>
+            <th>One Point Teleop Points</th>
+            <th>One Point Teleop Points Missed</th>
+            <th>Two Point Teleop Points</th>
+            <th>Two Point Teleop Points Missed</th>
+            <th>One Point Auto Points Made</th>
+            <th>One Point Auto Points Missed</th>
+            <th>Two Point Auto Points Made</th>
+            <th>Two Point Auto Points Missed</th>
+            <th>Wheel Turned</th>
+            <th>Robot Can Pick Correct Wheel Color</th>
+            <th>Robot Can Climb</th>
+            <th>Number of Other Robots the Robot Helped Climb</th>
+            <th>Did They Cause the Lever to Balance</th>
+            <th>Robot Left the Initiation Line</th>
+            <th>Time Robot Spent on Defense</th>
+            <th>Time spent Defending Bot 1</th>
+            <th>Time spent Defending Bot 2</th>
+            <th>Time spent Defending Bot 3</th>
+            <th>Time Robot spent Inoperable</th>
+            <th>Estimated Amount of 3 Points Scored</th>
             <th>Notes</th>
-            <th>Teleop Points</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
         </tr>
         {% for item in teamInfo %}
         <tr> 
             <td>{{ item.scouter }}</td>
+            <td>{{ item.team_id }}</td>
             <td>{{ item.match_id }}</td>
+            <td>{{ item.onePointMadeTele }}</td>
+            <td>{{ item.onePointMissedTele }}</td>
+            <td>{{ item.twoPointMadeTele }}</td>
+            <td>{{ item.twoPointMissedTele }}</td>
+            <td>{{ item.onePointMadeAuto }}</td>
+            <td>{{ item.onePointMissedAuto }}</td>
+            <td>{{ item.twoPointMadeAuto }}</td>
+            <td>{{ item.twoPointMissedAuto }}</td>
+            <td>{{ item.wheelTurn }}</td>
+            <td>{{ item.wheelColor }}</td>
+            <td>{{ item.climb }}</td>
+            <td>{{ item.climbAssist }}</td>
+            <td>{{ item.balanceResponsibility }}</td>
+            <td>{{ item.initiationLine }}</td>
+            <td>{{ item.timeOnDefense }}</td>
+            <td>{{ item.bot1Defense }}</td>
+            <td>{{ item.bot2Defense }}</td>
+            <td>{{ item.bot3Defense }}</td>
+            <td>{{ item.timeInoperable }}</td>
+            <td>{{ item.estimate3pt }}</td>
             <td>{{ item.notes }}</td>
         </tr>
+
         {% endfor %}
     </table>
+    </div>
 </body>
 </html>
