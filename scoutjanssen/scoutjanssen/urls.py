@@ -21,5 +21,5 @@ urlpatterns = [
     path('scout/', include('scoutingtool.urls')),
     path('admin/', admin.site.urls),
     path('schedule/', scoutview.schedule, name="schedule"),
-    path('', scoutview.submitReport, name='submitReport'),
+    path('', scoutview.index, name='submitReport'),
 ]
