@@ -112,3 +112,6 @@ def teamPage(request, number):
     teamInfo = Report.objects.filter(team_id = number)
     print("Reports found with team " + str(number) + ": " + str(teamInfo.count()))
     return render(request, 'scoutingtool/teamPage.html', {'teamInfo' : teamInfo})
+
+def index(request):
+    return render(request, 'scoutingtool/index.html', {})
