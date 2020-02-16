@@ -1,5 +1,5 @@
 from django import forms
-from .models import Report
+from .models import Report, Match, Event, CurrentScouting
 
 class ScoutingForm(forms.ModelForm):
     class Meta:
@@ -29,8 +29,12 @@ class ScoutingForm(forms.ModelForm):
             'timeInoperable',
             'notes',
             'estimate3pt'
-            
             ]
+    def __init__(self, *args, **kwargs):
+        super(ScoutingForm, self).__init__(*args, **kwargs)
+        #eventObject = Event.objects.filter(name = "gagr2019")
+        currentEvent = CurrentScouting.objects.filter(pk = 1).values_list('event_id')
+        self.fields['match'].queryset = Match.objects.filter(event_id = currentEvent[0]).order_by('number')
 
 class ScouterForm(forms.Form):
     scouter_id = forms.CharField(label='scouter_id', max_length=20)

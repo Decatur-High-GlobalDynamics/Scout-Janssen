@@ -7,4 +7,7 @@ urlpatterns = [
     path('scouter/', views.scouter, name='scouter'),
     path('syncDb/', views.syncDb, name='syncDb'),
     path('makeEvent/', views.makeEvent, name="makeEvent"),
+    path('report/', views.report, name="report"),
+    path('json/', views.exportDb, name="exportDb"),
+    path('team/<int:number>/', views.teamPage, name="teamPage")
 ]

@@ -1,0 +1,30 @@
+{% load static %}
+
+<html>
+<head>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Scouter</th>
+            <th>Match</th>
+            <th>Notes</th>
+            <th>Teleop Points</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for item in teamInfo %}
+        <tr> 
+            <td>{{ item.scouter }}</td>
+            <td>{{ item.match_id }}</td>
+            <td>{{ item.notes }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

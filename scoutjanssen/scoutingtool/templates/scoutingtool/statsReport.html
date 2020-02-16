@@ -1,3 +1,4 @@
+{% load static %}
 <html>
     <head>
         <style>
@@ -94,7 +95,7 @@
                 padding: 2vw;
             }
         </style>
-        <script src="js/constants.js"></script>
+        <script src="{% static 'scoutingtool/js/constants.js' %}"></script>
     </head>
     <body>
         <div id="varnamelist" class="boxColor noselect">
@@ -116,8 +117,8 @@
             </table>
             <div id="statBoxContainer"></div>
         </div>
-        <script src="js/statsReal.js"></script>
-        <script src="js/coolanimation.js"></script>
-        <script src="js/statsTeamController.js"></script>
+        <script src="{% static 'scoutingtool/js/statsReal.js' %}"></script>
+        <script src="{% static 'scoutingtool/js/coolanimation.js' %}"></script>
+        <script src="{% static 'scoutingtool/js/statsTeamController.js' %}"></script>
     </body>
 </html>

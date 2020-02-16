@@ -65,3 +65,7 @@ class Report(models.Model):
 
     def __str__(self):
         return str(self.scouter + self.match)
+
+class CurrentScouting(models.Model):
+    id = models.PositiveIntegerField(default = 1, primary_key = True)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
