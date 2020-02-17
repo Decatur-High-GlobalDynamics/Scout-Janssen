@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'Heebo-Medium';
+    src: url('../fonts/Heebo-Medium.ttf') format('truetype');
+}
+
+p {
+    padding-top: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+input, label {
+    display:block;
+}
+.forminputwrapper {
+    width: 90%;
+}
+.endgame {
+}
+#scoutbox {
+    margin: 0% 5% 0% 5%;
+    padding: 20px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 20px;
+    color: #1f2833;
+}
+body {
+    background-color: #0b0c10;
+}
+
+h1 {
+    color: #66fcf1;
+    font-size: 20px;
+}
+
+body {
+    font-family: 'Heebo-Medium', Fallback, sans-serif !important;
+    background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-size: 62,5%;
+}
+
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  background-color: rgb(214, 214, 214);
+  border: none;
+  width: 100%;
+  display: block;
+  padding-top: 0.2rem;
+  padding-left: 0.4rem;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.checkbox input {
+    width: 1vw;
+}
+
+input:placeholder-shown + label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
+}

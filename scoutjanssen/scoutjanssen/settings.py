@@ -126,3 +126,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# secure proxy SSL header and secure cookies
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
+# session expire at browser close
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# wsgi scheme
+os.environ['wsgi.url_scheme'] = 'https'
