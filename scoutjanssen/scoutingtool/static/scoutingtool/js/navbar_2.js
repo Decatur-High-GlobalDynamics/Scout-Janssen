@@ -1,16 +1,22 @@
-/*Textbox Events*/
-$(document).on('focusin', 'navbar input.search-textbox', function(){
-    if($(this).val() <= 0){
-        var parent = $(this).closest('div.search');
-        parent.addClass('focused');
+$(".openbtn").on("click", function() {
+    $(".ui.sidebar").toggleClass("very thin icon");
+    $(".asd").toggleClass("marginlefting");
+    $(".sidebar z").toggleClass("displaynone");
+    $(".ui.accordion").toggleClass("displaynone");
+    $(".ui.dropdown.item").toggleClass("displayblock");
+ 
+    $(".logo").find('img').toggle();
+ 
+  })
+  $(".ui.dropdown").dropdown({
+    allowCategorySelection: true,
+    transition: "fade up",
+    context: 'sidebar',
+    on: "hover"
+  });
+ 
+  $('.ui.accordion').accordion({
+    selector: {
+ 
     }
-});
-$(document).on('focusout', 'navbar input.search-textbox', function(){
-    if($(this).val() <= 0){
-        var parent = $(this).closest('div.search');
-        parent.removeClass('focused');
-    }
-});
-$(document).on('click', 'navbar .search', function(){
-    $(this).children('input.search-textbox').focus();
-});
+  });
