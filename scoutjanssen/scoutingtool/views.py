@@ -92,7 +92,6 @@ def syncDb(request):
         if Match.objects.filter(number=match.number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]).count() > 1:
             match.delete()
 
-    print("DATA SYNCED WITH TBA")
     return render(request, 'scoutingtool/selectScout.html', {})
 
 def makeEvent(request):
@@ -110,7 +109,7 @@ def exportDb(request):
 
 def teamPage(request, number):
     teamInfo = Report.objects.filter(team_id = number)
-    print("Reports found with team " + str(number) + ": " + str(teamInfo.count()))
+    #print("Reports found with team " + str(number) + ": " + str(teamInfo.count()))
     return render(request, 'scoutingtool/teamPage.html', {'teamInfo' : teamInfo})
 
 def index(request):
