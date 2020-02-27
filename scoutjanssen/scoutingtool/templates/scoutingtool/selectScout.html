@@ -1,6 +1,8 @@
 <html>
 <head>
+{% extends "scoutingtool/base.html" %}
 {% load static %}
+{% block content %}
     <title>Select Scouter</title>
     <link rel="stylesheet" href='{% static 'scoutingtool/css/scouterselect.css' %}'>
 </head>
@@ -19,3 +21,4 @@
     </div>
 <body>
 </html>
+{% endblock content %}
