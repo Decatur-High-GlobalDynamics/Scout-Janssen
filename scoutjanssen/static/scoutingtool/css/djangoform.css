@@ -17,7 +17,7 @@ input, label {
 .endgame {
 }
 #scoutbox {
-    margin: 0% 5% 0% 5%;
+    /**margin: 0% 5% 0% 5%;*/
     padding: 20px;
     flex-wrap: wrap;
     display: flex;
@@ -29,6 +29,12 @@ input, label {
 body {
     background-color: #0b0c10;
 }
+
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    position: relative;
+    margin-left: 0px;
+}
+
 
 h1 {
     color: #66fcf1;
@@ -51,7 +57,6 @@ body {
 
 label {
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
   margin-top: 0.7rem;
   display: block;
   transition: all 0.3s;
@@ -61,7 +66,6 @@ label {
 input {
   font-family: 'Roboto', sans-serif;
   color: #333;
-  font-size: 1rem;
   border-radius: 0.2rem;
   background-color: rgb(214, 214, 214);
   border: none;
