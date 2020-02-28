@@ -11,7 +11,9 @@ function getTeamNum(){
 
 async function run(teamNum){
     reports = cleanData(await getReports());
+    console.log(reports);
     reportsOfTeam = getReportsOfOneBot(teamNum, reports);
+    console.log(reportsOfTeam);
     varNames = Object.keys(reportsOfTeam[0]);
     reportsOfTeam = addOtherBotsToData(reports, reportsOfTeam);
     if(!(getTeamNum() > 0) || !(reportsOfTeam.length > 0)){
@@ -84,7 +86,7 @@ function createStatBox(formula, name, teamReports){
     var matchStats = [];
     var avg = 0;
     for(var i = 0; i < teamReports.length; i++){
-        matchStats[i] = [reportsOfTeam[i].matchNumber, eval(formula)];
+        matchStats[i] = [reportsOfTeam[i].match, eval(formula)];
     }
 
     var box = "<div class='statBox'><h2>" + name + "</h2><table>";
@@ -109,7 +111,7 @@ function createStatBox(formula, name, teamReports){
 function getTeamsOfMatch(reports, matchNumber){
     var robotsInMatch = [];
     for(var i = 0; i < reports.length; i++){
-        if(reports[i].matchNumber == matchNumber){
+        if(reports[i].match == matchNumber){
             robotsInMatch[reports[i].position] = reports[i];
         }
     }
@@ -134,7 +136,7 @@ function makeNullReport(){
 
 function addOtherBotsToData(reports, teamReports){
     for(var i = 0; i < teamReports.length; i++){
-        teamReports[i]["robots"] = (getTeamsOfMatch(reports, teamReports[i].matchNumber));
+        teamReports[i]["robots"] = (getTeamsOfMatch(reports, teamReports[i].match));
     }
 
     return teamReports;

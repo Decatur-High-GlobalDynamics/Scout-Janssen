@@ -4,21 +4,31 @@ var varNames;
 var statFormulas = [];
 var ws;
 var averages = {};
+var matchData = {};
+var teams;
+var teamData;
+var chart;
 
-async function run(teamNum){
-    reports = cleanData(await getReports());
+function getTeamNum(){
+    return location.href.substring(location.href.indexOf("#") + 1);
+}
+
+function run(teamNum){
+    averages = {};
+    matchData = {};
     reportsOfTeam = getReportsOfOneBot(teamNum, reports);
     varNames = Object.keys(reportsOfTeam[0]);
     reportsOfTeam = addOtherBotsToData(reports, reportsOfTeam);
-    if(!(getTeamNum() > 0) || !(reportsOfTeam.length > 0)){
-        document.body.innerHTML = "Error! Yell at Keon.";
-    }
     varNames.push("robots");
     var varNamesToDisplay = "";
     for(i of varNames){
         varNamesToDisplay += "<div class='highlightOnHover' draggable='true' ondragstart='dragStart(event)'>" + i + "</div>";
     }
-    document.getElementById("varnamelist").innerHTML += varNamesToDisplay;
+    for(var i = 0; i < statFormulas.length; i++){
+        evalStats(statFormulas[i].formula, statFormulas[i].name, reportsOfTeam);
+    }
+
+    return {averages: averages, matchData: matchData};
 }
 
 function dragStart(event) {
@@ -75,36 +85,32 @@ function replaceAll(s, s1, s2){
     return s; 
 }
 
-function createStatBox(formula, name, teamReports){
+function evalStats(formula, name, teamReports){
     var matchStats = [];
     var avg = 0;
     for(var i = 0; i < teamReports.length; i++){
-        matchStats[i] = [reportsOfTeam[i].matchNumber, eval(formula)];
+        matchStats[i] = [reportsOfTeam[i].match, eval(formula)];
     }
 
-    var box = "<div class='statBox'><h2>" + name + "</h2><table>";
+    matchData[name] = [];
 
     for(var i = 0; i < matchStats.length; i++){
-        box += "<tr><td>Match " + matchStats[i][0] + ":</td><td> " + matchStats[i][1] + "</td></tr>";
+        matchData[name][matchStats[i][0]] = matchStats[i][1];
         avg += matchStats[i][1];
     }
 
     avg /= matchStats.length;
 
-    box += "<tr><td>Average:</td><td>" + avg + "</td></tr>";
-
-    box += "</table></div>";
-
     averages[name] = avg;
 
-    return box;
+    return;
 }
 
 //If "Position" changes, change this
 function getTeamsOfMatch(reports, matchNumber){
     var robotsInMatch = [];
     for(var i = 0; i < reports.length; i++){
-        if(reports[i].matchNumber == matchNumber){
+        if(reports[i].match == matchNumber){
             robotsInMatch[reports[i].position] = reports[i];
         }
     }
@@ -129,7 +135,7 @@ function makeNullReport(){
 
 function addOtherBotsToData(reports, teamReports){
     for(var i = 0; i < teamReports.length; i++){
-        teamReports[i]["robots"] = (getTeamsOfMatch(reports, teamReports[i].matchNumber));
+        teamReports[i]["robots"] = (getTeamsOfMatch(reports, teamReports[i].match));
     }
 
     return teamReports;
@@ -157,19 +163,132 @@ function startWSStuff(){
 
     ws.onmessage = (message) => {
         statFormulas = JSON.parse(message.data);
-        updateSelectBox();
+        doTheRest();
     }
 }
 
-function runAll(){
+async function start(){
     reports = cleanData(await getReports());
 
     startWSStuff();
 }
 
-function updateSelectBox(){
-    var selectBox = document.getElementById("selectVar");
-    var boxHTML = "";
+function doTheRest(){
+
+    var selectVarBox = document.getElementById("selectVar");
+
+    selectVarBox.innerHTML = "";
+
+    teams = [];
+
+    teamData = [];
+
+    for(i of reports){
+        if(!teams.includes(i.team)){
+            teams.push(i.team);
+            teamData[i.team] = run(i.team);
+        }
+    }
+
+    var statNames = [];
+
+    for(var i = 0; i < statFormulas.length; i++){
+        statNames.push(statFormulas[i].name);
+    }
+
+    for(i of statNames){
+        selectVarBox.innerHTML += "<option value='" + i + "'>" + i + "</option>";
+    }
+
+    console.log(teams);
+
+    updateTable();
 }
 
-runAll();
+function updateTable(){
+    var table = document.getElementById("dataTable");
+    table.innerHTML = "";
+
+    var sortingValName = document.getElementById("selectVar").value;
+
+    teams = teams.sort((a, b) =>{
+        return teamData[b]["averages"][sortingValName] - teamData[a]["averages"][sortingValName];
+    });
+
+    console.log(sortingValName);
+
+    for(var i = 0; i < teams.length; i++){
+        table.innerHTML += "<tr><td>" + teams[i] + "</td><td>" + teamData[teams[i]]["averages"][sortingValName] + "</td></tr>";
+    }
+
+    graphData();
+}
+
+function graphData(){
+
+    var sortingValName = document.getElementById("selectVar").value;
+
+    var teamNums = [];
+
+    var teamAvgs = [];
+
+    for(var i = 0; i < teams.length; i++){
+        teamNums.push(teams[i]);
+        teamAvgs.push(teamData[teams[i]]["averages"][sortingValName]);
+    }
+
+    var ctx = document.getElementById('chart').getContext('2d');
+
+    var backColors = [];
+    var borderColors = [];
+
+    for(i in teamNums){
+        var s;
+        switch(i % 3){
+            case 0:
+                s = "10, 255";
+                break;
+            case 1:
+                s = "255, 10";
+                break;
+            case 2:
+                s = "255, 255";
+                break;
+        }
+
+        backColors.push("rgba(0, " + s + ", 0.2)");
+        borderColors.push("rgba(0, " + s + ", 1)");
+    }
+
+    if(chart == undefined){
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: teamNums,
+                datasets: [{
+                    label: sortingValName,
+                    data: teamAvgs,
+                    backgroundColor: backColors,
+                    borderColor: borderColors,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    } else {
+        chart.data.datasets[0].data = teamAvgs;
+        chart.data.datasets[0].label = sortingValName;
+        chart.data.labels = teamNums;
+        chart.update();
+    }
+}
+
+start();
