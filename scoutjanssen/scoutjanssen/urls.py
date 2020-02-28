@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('schedule/', scoutview.schedule, name="schedule"),
     path('', scoutview.index, name='submitReport'),
+    (r'(.*.png)', 'scoutjanssen.staticserve.serve'),
+    (r'(.*.css)', 'scoutjanssen.staticserve.serve'),
+    (r'(.*.js)', 'scoutjanssen.staticserve.serve'),
+    (r'(.*.scss)', 'scoutjanssen.staticserve.serve'),
 ]
