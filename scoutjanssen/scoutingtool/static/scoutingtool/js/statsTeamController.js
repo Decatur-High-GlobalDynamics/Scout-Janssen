@@ -11,6 +11,7 @@ function getTeamNum(){
 }
 
 async function run(teamNum){
+    console.log(await getReports())
     reports = cleanData(await getReports());
     console.log(reports);
     reportsOfTeam = getReportsOfOneBot(teamNum, reports);
