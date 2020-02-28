@@ -81,6 +81,9 @@ function calcBotReliantMatch(info){
 }
 
 async function rqAPI(url, func){
+  const init = {
+    method: 'GET',
+  }
   const request = new Request(url, init)
   let response = await fetch(request);
   func(response);
