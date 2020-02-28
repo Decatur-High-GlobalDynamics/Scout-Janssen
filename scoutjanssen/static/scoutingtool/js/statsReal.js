@@ -80,14 +80,16 @@ function calcBotReliantMatch(info){
 
 }
 
+async function rqAPI(url, func){
+  const request = new Request(url, init)
+  let response = await fetch(request);
+  func(response);
+}
+
 async function getReports(){
   var reports;
   var newReports = [];
-  async function rqAPI(url, func){
-    const request = new Request(url, init)
-    let response = await fetch(request);
-    func(response);
-  }
+
   rqAPI('https://frc4026.com/scout/json', (response) => {
     response.json().then(function(value){
       reports = value;
