@@ -6,7 +6,8 @@ var ws;
 var averages = {};
 
 function getTeamNum(){
-    return location.href.substring(location.href.indexOf("/#") + 1);
+    console.log(location.href.indexOf("#"));
+    return location.href.substring(location.href.indexOf("/#") + 2);
 }
 
 async function run(teamNum){
