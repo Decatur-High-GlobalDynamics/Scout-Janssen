@@ -94,7 +94,6 @@ async function getReports(){
   var newReports = [];
   rqAPI('https://frc4026.com/scout/json', async (response) => {
     response.json().then(async (value) => {
-      console.log(value)
       for(var i = 0; i < value.length; i++){
         newReports.push(value[i].fields);
       }
