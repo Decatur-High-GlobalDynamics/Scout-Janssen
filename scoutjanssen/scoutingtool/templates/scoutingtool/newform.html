@@ -151,7 +151,7 @@
     console.log(table)
     let thead = table.createTHead();
     let row = table.insertRow();
-    for (let match of schedule) {
+    for (let match in schedule) {
         let th = document.createElement("th");
         let scouter = document.createTextNode(schedule[match]);
         th.appendChild(text);
