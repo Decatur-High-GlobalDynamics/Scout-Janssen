@@ -113,7 +113,7 @@ def teamPage(request, number):
     return render(request, 'scoutingtool/teamPage.html', {'teamInfo' : teamInfo})
 
 def matchPage(request, number):
-    matchInfo = Match.objects.filter(match_number = number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0])
+    matchInfo = Match.objects.filter(number = number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0])
     #print("Reports found with team " + str(number) + ": " + str(teamInfo.count()))
     return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo})
 
