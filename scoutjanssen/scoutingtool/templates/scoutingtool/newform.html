@@ -32,16 +32,27 @@
     {% endfor %}
 {% endif %}
 <script>
-    schedule_string = '{{schedule.data}}'
-    schedule_string = schedule_string.replace(/&#39;/g, '"')
-    console.log(schedule_string)
-    schedule = JSON.parse(schedule_string)
-    console.log(schedule)
+    let schedule_string = '{{schedule.data}}';
+    schedule_string = schedule_string.replace(/&#39;/g, '"');
+    let schedule = JSON.parse(schedule_string);
+    console.log(schedule);
+    let table = document.getElementById("scout-schedule");
+    let thead = table.createTHead();
+    let row = table.insertRow();
+    for (let match of schedule) {
+        let th = document.createElement("th");
+        let scouter = document.createTextNode(schedule[match]);
+        th.appendChild(text);
+        row.appendChild(th);
+    }
 </script>
 <form action="" method="post">
     {% csrf_token %}
-
-    		<div class="timer">
+    <div>
+        <table id="scout-schedule">
+        </table>
+    </div>
+    	<div class="timer">
 			<div class="table-wrapper" position="center">
 				<table class="fl-table">
 					<thead>
