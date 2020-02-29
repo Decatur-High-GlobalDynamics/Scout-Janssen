@@ -98,9 +98,9 @@ async function getReports(){
         newReports.push(value[i].fields);
       }
       console.log(newReports)
-      return newReports;
     })
   });
+  return newReports;
 }
 
 function getReportsOfOneBot(teamNum, reports){
