@@ -32,7 +32,7 @@ def submitReport(request):
                     'data':data,
                 })
             else:
-                schedule = Schedule.objects.filter(scouter = request.COOKIES["scouter_id"]).values_list('data', flat=True)
+                schedule = Schedule.objects.filter(scouter = request.COOKIES["scouter_id"])
                 return render(request, 'scoutingtool/newform.html', {'form': form, 'schedule' : schedule})
         else:
             return render(request, 'scoutingtool/newform.html', {'form': form_class,})
