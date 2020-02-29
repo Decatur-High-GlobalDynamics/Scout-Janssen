@@ -114,7 +114,6 @@ def teamPage(request, number):
 
 def matchPage(request, number):
     matchInfo = Match.objects.filter(number = number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0])
-    #print("Reports found with team " + str(number) + ": " + str(teamInfo.count()))
     return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo})
 
 def index(request):
