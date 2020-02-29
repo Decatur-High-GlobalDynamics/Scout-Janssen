@@ -142,7 +142,7 @@ def makeSchedule(request):
     for name in scouterNames:
         schedule = Schedule(scouter = name, data = scouters[name])
         schedule.save()
-    return redirect('index')
+    return redirect('')
         
         
 
