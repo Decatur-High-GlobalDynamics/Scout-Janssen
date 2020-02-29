@@ -90,14 +90,12 @@ async function rqAPI(url, func){
 }
 
 async function getReports(){
-  var newReports = [];
-  const url = 'https://frc4026.com/scout/json';
-  fetch(url).then(data => {
-    for(var i = 0; i < data.length; i++){
-      newReports.push(data[i].fields);
-    }
-    return newReports;
-  })
+  reports = []
+  value = await fetch('https://frc4026.com/scout/json').then(data => {return (data.json())})
+  for(let i = 0; i < value.length; i++){
+    reports.push(value[i]);
+  }
+  return reports;
 }
 
 function getReportsOfOneBot(teamNum, reports){
