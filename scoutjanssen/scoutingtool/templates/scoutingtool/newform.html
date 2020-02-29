@@ -154,7 +154,7 @@
     for (let match in schedule) {
         let th = document.createElement("th");
         console.log(schedule[match]["bot"])
-        let scouter = document.createTextNode(schedule[match]);
+        let scouter = document.createTextNode(String(schedule[match]));
         th.appendChild(scouter);
         row.appendChild(th);
     }
