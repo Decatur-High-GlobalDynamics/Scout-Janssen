@@ -32,7 +32,7 @@
     {% endfor %}
 {% endif %}
     <div>
-        <table id="scout-schedule"></table>
+        <table id="scout-schedule" class="minimalistBlack"></table>
     </div>
 <form action="" method="post">
     {% csrf_token %}
@@ -154,14 +154,14 @@
     let botRow = table.insertRow();
     for (let match in schedule) {
         let thBot = document.createElement("th");
-        let thMatch = document.createElement("th");
+        let tdMatch = document.createElement("td");
         let bot = (schedule[match]["bot"] + 1)
         let matchText = document.createTextNode(String(match));
         bot = document.createTextNode(String(bot));
         thBot.appendChild(bot);
-        thMatch.appendChild(matchText);
+        tdMatch.appendChild(matchText);
         botRow.appendChild(thBot);
-        matchRow.appendChild(thMatch);
+        matchRow.appendChild(tdMatch);
     }
 </script>
 </html>
