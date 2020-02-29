@@ -34,7 +34,9 @@
         </div>
     {% endfor %}
 {% endif %}
-<p>{{schedule}}</p>
+{% for s in schedule %}
+<p>{{ s.data }}</p>
+{% endfor %}
 <form action="" method="post">
     {% csrf_token %}
 
