@@ -157,7 +157,7 @@
         let thMatch = document.createElement("th");
         let bot = (schedule[match]["bot"] + 1)
         let match = document.createTextNode(String(match));
-        let bot = document.createTextNode(String(bot));
+        bot = document.createTextNode(String(bot));
         thBot.appendChild(bot);
         thMatch.appendChild(match);
         botRow.appendChild(thBot);
