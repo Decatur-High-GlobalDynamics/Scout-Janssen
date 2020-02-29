@@ -91,7 +91,7 @@ async function rqAPI(url, func){
 
 async function getReports(){
   let reports = [];
-  value = await fetch('https://frc4026.com/scout/json').then(data => {return (data.json())})
+  let value = await fetch('https://frc4026.com/scout/json').then(data => {return (data.json())})
   for(let i = 0; i < value.length; i++){
     reports.push(value[i].fields);
   }

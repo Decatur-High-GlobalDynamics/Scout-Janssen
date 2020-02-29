@@ -9,5 +9,6 @@ urlpatterns = [
     path('makeEvent/', views.makeEvent, name="makeEvent"),
     path('report/', views.report, name="report"),
     path('json/', views.exportDb, name="exportDb"),
-    path('team/<int:number>/', views.teamPage, name="teamPage")
+    path('team/<int:number>/', views.teamPage, name="teamPage"),
+    path('match/<int:number>/', views.matchPage, name="matchPage"),
 ]
