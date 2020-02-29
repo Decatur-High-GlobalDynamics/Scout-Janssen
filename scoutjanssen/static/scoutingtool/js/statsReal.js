@@ -99,9 +99,9 @@ async function getReports(){
       }
       //console.log(newReports)
     })
-  }).then((value) => {
-    console.log(value)
-    return value;
+  }).then(() => {
+    console.log(newReports)
+    return newReports;
   })
 }
 
