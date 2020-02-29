@@ -150,12 +150,18 @@
     let table = document.getElementById("scout-schedule");
     console.log(table)
     let thead = table.createTHead();
-    let row = table.insertRow();
+    let matchRow = table.insertRow();
+    let botRow = table.insertRow();
     for (let match in schedule) {
-        let th = document.createElement("th");
-        let scouter = document.createTextNode(String(schedule[match]["bot"]));
-        th.appendChild(scouter);
-        row.appendChild(th);
+        let thBot = document.createElement("th");
+        let thMatch = document.createElement("th");
+        let bot = (schedule[match]["bot"] + 1)
+        let match = document.createTextNode(String(match));
+        let bot = document.createTextNode(String(bot));
+        thBot.appendChild(bot);
+        thMatch.appendChild(match);
+        botRow.appendChild(thBot);
+        matchRow.appendChild(thMatch);
     }
 </script>
 </html>
