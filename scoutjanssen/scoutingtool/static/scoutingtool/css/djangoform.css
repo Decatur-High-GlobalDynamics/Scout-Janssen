@@ -110,7 +110,7 @@ table.minimalistBlack {
   table.minimalistBlack thead th {
     font-size: 15px;
     font-weight: bold;
-    color: #000000;
+    color: white;
     text-align: left;
   }
   table.minimalistBlack tfoot {
