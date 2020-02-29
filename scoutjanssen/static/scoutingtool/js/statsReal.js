@@ -95,7 +95,6 @@ async function getReports(){
   for(let i = 0; i < value.length; i++){
     reports.push(value[i].fields);
   }
-  reports.then(value => {reports = value});
   return reports;
 }
 
