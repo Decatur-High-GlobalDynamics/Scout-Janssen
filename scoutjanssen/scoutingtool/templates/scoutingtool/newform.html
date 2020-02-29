@@ -37,21 +37,21 @@
     let schedule = JSON.parse(schedule_string);
     console.log(schedule);
     let table = document.getElementById("scout-schedule");
-    let thead = table.createTHead();
+    console.log(table)
+    /**let thead = table.createTHead();
     let row = table.insertRow();
     for (let match of schedule) {
         let th = document.createElement("th");
         let scouter = document.createTextNode(schedule[match]);
         th.appendChild(text);
         row.appendChild(th);
-    }
+    }*/
 </script>
+    <div>
+        <table id="scout-schedule"></table>
+    </div>
 <form action="" method="post">
     {% csrf_token %}
-    <div>
-        <table id="scout-schedule">
-        </table>
-    </div>
     	<div class="timer">
 			<div class="table-wrapper" position="center">
 				<table class="fl-table">
