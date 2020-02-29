@@ -34,8 +34,10 @@ def submitReport(request):
             else:
                 return render(request, 'scoutingtool/newform.html', {'form': form,})
         else: 
-            schedule = Schedule.objects.filter(scouter = request.COOKIES["scouter_id"])
+            scouterCookie = request.COOKIES["scouter_id"]
+            schedule = Schedule.objects.filter(scouter = scouterCookie)
             #schedule = request.COOKIES["scouter_id"]
+            schedule = schedule[0].data
             return render(request, 'scoutingtool/newform.html', {'form': form_class, 'schedule':schedule})
     else:
         return redirect('scouter')

@@ -35,7 +35,7 @@
     {% endfor %}
 {% endif %}
 {% for s in schedule %}
-<p>{{ s.data }}</p>
+<p>{{ s }}</p>
 {% endfor %}
 <form action="" method="post">
     {% csrf_token %}
