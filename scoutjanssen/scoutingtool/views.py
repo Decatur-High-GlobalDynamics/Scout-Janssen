@@ -123,7 +123,7 @@ def index(request):
 
 def makeSchedule(request):
     event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0];
-    matches = Match.filter(event_id = event_key).values_list('number', flat=True)
+    matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
     scouterNames = ["Hayden", "Carter", "Charlotte", "Owen", "Otto", "Davis", "Rohan", "Keon", "Max", "Madeline", "Brooke", "David", "Will", "Yana"]
     scouters = {}
