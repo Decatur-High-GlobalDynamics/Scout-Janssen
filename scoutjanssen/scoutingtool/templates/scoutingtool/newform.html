@@ -153,8 +153,7 @@
     let row = table.insertRow();
     for (let match in schedule) {
         let th = document.createElement("th");
-        console.log(schedule[match]["bot"])
-        let scouter = document.createTextNode(String(schedule[match]));
+        let scouter = document.createTextNode(String(schedule[match]["bot"]));
         th.appendChild(scouter);
         row.appendChild(th);
     }
