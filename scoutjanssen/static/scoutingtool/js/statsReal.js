@@ -97,12 +97,10 @@ async function getReports(){
       for(var i = 0; i < value.length; i++){
         newReports.push(value[i].fields);
       }
-      //console.log(newReports)
+      console.log(newReports)
+      return newReports;
     })
-  }).then(() => {
-    console.log(newReports)
-    return newReports;
-  })
+  });
 }
 
 function getReportsOfOneBot(teamNum, reports){

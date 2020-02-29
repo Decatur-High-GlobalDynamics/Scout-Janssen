@@ -12,24 +12,22 @@ function getTeamNum(){
 
 async function run(teamNum){
     //console.log(await getReports())
-    reports = await getReports().then((value) => {
-        console.log(value);
-    });
-    console.log(reports);
-    reportsOfTeam = getReportsOfOneBot(teamNum, reports);
-    console.log(reportsOfTeam);
-    varNames = Object.keys(reportsOfTeam[0]);
-    reportsOfTeam = addOtherBotsToData(reports, reportsOfTeam);
-    if(!(getTeamNum() > 0) || !(reportsOfTeam.length > 0)){
-        document.body.innerHTML = "Error! Yell at Keon.";
-    }
-    varNames.push("robots");
-    var varNamesToDisplay = "";
-    for(i of varNames){
-        varNamesToDisplay += "<div class='highlightOnHover' draggable='true' ondragstart='dragStart(event)'>" + i + "</div>";
-    }
-    document.getElementById("varnamelist").innerHTML += varNamesToDisplay;
-    startWSStuff();
+    getReports(function(reports){
+        reportsOfTeam = getReportsOfOneBot(teamNum, reports);
+        console.log(reportsOfTeam);
+        varNames = Object.keys(reportsOfTeam[0]);
+        reportsOfTeam = addOtherBotsToData(reports, reportsOfTeam);
+        if(!(getTeamNum() > 0) || !(reportsOfTeam.length > 0)){
+            document.body.innerHTML = "Error! Yell at Keon.";
+        }
+        varNames.push("robots");
+        var varNamesToDisplay = "";
+        for(i of varNames){
+            varNamesToDisplay += "<div class='highlightOnHover' draggable='true' ondragstart='dragStart(event)'>" + i + "</div>";
+        }
+        document.getElementById("varnamelist").innerHTML += varNamesToDisplay;
+        startWSStuff();
+    })
 }
 
 function dragStart(event) {
