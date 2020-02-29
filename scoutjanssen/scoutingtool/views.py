@@ -6,6 +6,8 @@ import datetime
 import requests
 from django.core import serializers
 from django.http import HttpResponse
+from collections import deque
+import random
 
 
 headers = {'X-TBA-Auth-Key': 'qg4OFGslC8z4zpEdaR8qPA79OUCBCi6dpE1tWLDEZqHARJLhu1GL7s8Aqq84vvJP'}
@@ -118,3 +120,36 @@ def matchPage(request, number):
 
 def index(request):
     return render(request, 'scoutingtool/index.html', {})
+
+def makeSchedule(request):
+    event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0];
+    matches = Match.objects.filter(event_id = event_key)
+    matches = matches.objects.values_list('number', flat=True)
+    matches = list(matches)
+    scouterNames = ["Hayden", "Carter", "Charlotte", "Owen", "Otto", "Davis", "Rohan", "Keon", "Max", "Madeline", "Brooke", "David", "Will", "Yana"]
+    scouters = {}
+    random.shuffle(scouterNames)
+    for name in scouterNames:
+        scouters[name] = {}
+    for match in range(len(matches)):
+        for i in range(6):
+            data = {"bot": i}
+            scouters[scouterNames[i]][match] = data
+            #for match, push scouter data to scouting array
+        scouterNames = deque(scouterNames)
+        scouterNames.rotate(1)
+        if(isinstance((match/16), int)):
+            random.shuffle(scouterNames)
+    for name in scouterNames:
+        schedule = Schedule(scouter = name, data = scouters[name])
+        schedule.save()
+        
+        
+
+    #[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    #Take 1-6 and assign them matches 1
+    #Shift scouters left 1
+    #make 1-6 assign 2...
+    #Repeat till 16 iterations
+    #Reshuffle
+    #Start again

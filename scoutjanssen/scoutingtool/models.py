@@ -69,3 +69,7 @@ class Report(models.Model):
 class CurrentScouting(models.Model):
     id = models.PositiveIntegerField(default = 1, primary_key = True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+class Schedule(models.Model):
+    scouter = models.CharField(primary_key=True, max_length=20);
+    matches = models.CharField(blank = True, default='', max_length=9999);
