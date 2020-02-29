@@ -137,7 +137,7 @@ def makeSchedule(request):
     for match in range(len(matches)):
         for i in range(6):
             data = {"bot": i}
-            scouters[scouterNames[i]][match] = data
+            scouters[scouterNames[i]][str(match)] = data
             #for match, push scouter data to scouting array
         scouterNames = deque(scouterNames)
         scouterNames.rotate(1)
