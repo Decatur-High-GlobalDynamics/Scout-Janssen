@@ -72,4 +72,4 @@ class CurrentScouting(models.Model):
 
 class Schedule(models.Model):
     scouter = models.CharField(primary_key=True, max_length=20);
-    matches = models.CharField(blank = True, default='', max_length=9999);
+    data = models.CharField(blank = True, default='', max_length=9999);
