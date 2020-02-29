@@ -36,9 +36,9 @@
 {% endif %}
 {% for s in schedule %}
 <script>
-    
+    schedule = dict({{s.data}})
+    console.log(schedule)
 </script>
-<p>{{s.data}}</p>
 {% endfor %}
 <form action="" method="post">
     {% csrf_token %}
