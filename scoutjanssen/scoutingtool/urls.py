@@ -11,4 +11,5 @@ urlpatterns = [
     path('json/', views.exportDb, name="exportDb"),
     path('team/<int:number>/', views.teamPage, name="teamPage"),
     path('match/<int:number>/', views.matchPage, name="matchPage"),
+    path('makeSchedule/', views.makeSchedule, name="makeSchedule"),
 ]
