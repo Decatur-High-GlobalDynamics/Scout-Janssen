@@ -33,7 +33,7 @@
 {% endif %}
 <script>
     schedule_string = '{{schedule.data}}'
-    schedule_string = schedule_string.replace("&#39;", "'")
+    schedule_string = schedule_string.replace(/&#39;/g, '')
     console.log(schedule_string)
     schedule = JSON.parse(schedule_string)
     console.log(schedule)
