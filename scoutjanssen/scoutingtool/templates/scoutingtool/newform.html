@@ -36,7 +36,7 @@
 {% endif %}
 {% for s in schedule %}
 <script>
-    schedule = dict({{s.data}})
+    schedule = dict('{{s.data}}')
     console.log(schedule)
 </script>
 {% endfor %}
