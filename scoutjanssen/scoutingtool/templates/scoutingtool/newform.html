@@ -156,10 +156,10 @@
         let thBot = document.createElement("th");
         let thMatch = document.createElement("th");
         let bot = (schedule[match]["bot"] + 1)
-        let match = document.createTextNode(String(match));
+        let matchText = document.createTextNode(String(match));
         bot = document.createTextNode(String(bot));
         thBot.appendChild(bot);
-        thMatch.appendChild(match);
+        thMatch.appendChild(matchText);
         botRow.appendChild(thBot);
         matchRow.appendChild(thMatch);
     }
