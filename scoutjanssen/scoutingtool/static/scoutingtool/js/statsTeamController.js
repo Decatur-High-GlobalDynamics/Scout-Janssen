@@ -12,7 +12,9 @@ function getTeamNum(){
 
 async function run(teamNum){
     //console.log(await getReports())
-    reports = await getReports();
+    reports = await getReports().then((value) => {
+        console.log(value);
+    });
     console.log(reports);
     reportsOfTeam = getReportsOfOneBot(teamNum, reports);
     console.log(reportsOfTeam);
