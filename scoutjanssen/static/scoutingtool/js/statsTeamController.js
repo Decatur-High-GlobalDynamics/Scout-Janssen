@@ -6,7 +6,6 @@ var ws;
 var averages = {};
 
 function getTeamNum(){
-    console.log(location.href.indexOf("#"));
     return location.href.substring(location.href.indexOf("/#") + 2);
 }
 
