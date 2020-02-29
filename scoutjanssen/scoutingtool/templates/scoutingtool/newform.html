@@ -34,12 +34,10 @@
         </div>
     {% endfor %}
 {% endif %}
-{% for s in schedule %}
 <script>
     schedule = JSON.parse('{{s.data}}')
     console.log(schedule)
 </script>
-{% endfor %}
 <form action="" method="post">
     {% csrf_token %}
 
