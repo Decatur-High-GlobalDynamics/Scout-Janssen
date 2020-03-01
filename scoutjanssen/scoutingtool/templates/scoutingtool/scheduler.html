@@ -12,9 +12,7 @@
 	<div>
 		<p style="margin-left: 0.5vw; margin-top: 1vw;">*This page is temporary, but I don't have time to make it better.</p>
 	</div>
-	{% for item in schedules %}
-	<p>{{ item }}</p>
-	{% endfor %}
+
 	<div class="container">
 		<div class="row">
 		  <div class="col-xs-12">
@@ -28,6 +26,10 @@
 				  </tr>
 				</thead>
 				<tbody>
+					{% for item in schedules %}
+					<p>{{ item.scouter }}</p>
+					<p>{{ item.data }}</p>
+					{% endfor %}
 				</tbody>
 			  </table>
 			</div>
