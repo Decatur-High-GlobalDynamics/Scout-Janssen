@@ -146,9 +146,7 @@
     let schedule_string = '{{schedule.data}}';
     schedule_string = schedule_string.replace(/&#39;/g, '"');
     let schedule = JSON.parse(schedule_string);
-    console.log(schedule);
     let table = document.getElementById("scout-schedule");
-    console.log(table)
     let thead = table.createTHead();
     let matchRow = document.createElement("tr");
     let botRow = table.insertRow();
