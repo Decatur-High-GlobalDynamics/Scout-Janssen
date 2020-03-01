@@ -136,7 +136,7 @@ def makeSchedule(request):
         scouters[name] = {}
     for match in range(len(matches)):
         for i in range(6):
-            team_id = Match.objects.filter(event_id = event_key).filter(number = match).values_list('team' + str(i + 1) + "_id", flat=True)[0]
+            team_id = Match.objects.filter(event_id = event_key).filter(number = matches[match]).values_list('team' + str(i + 1) + "_id", flat=True)[0]
             data = {"bot": team_id}
             scouters[scouterNames[i]][str(match)] = data
             #for match, push scouter data to scouting array
