@@ -8,6 +8,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from collections import deque
 import random
+import csv
 
 
 headers = {'X-TBA-Auth-Key': 'qg4OFGslC8z4zpEdaR8qPA79OUCBCi6dpE1tWLDEZqHARJLhu1GL7s8Aqq84vvJP'}
@@ -155,3 +156,19 @@ def makeSchedule(request):
     #Repeat till 16 iterations
     #Reshuffle
     #Start again
+
+def export_to_csv(request):
+    model_class = Report
+
+    meta = model_class._meta
+    field_names = [field.name for field in meta.fields]
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+    writer = csv.writer(response)
+
+    writer.writerow(field_names)
+    for obj in model_class.objects.all():
+        row = writer.writerow([getattr(obj, field) for field in field_names])
+
+    return response

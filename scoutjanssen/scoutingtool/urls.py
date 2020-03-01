@@ -12,4 +12,5 @@ urlpatterns = [
     path('team/<int:number>/', views.teamPage, name="teamPage"),
     path('match/<int:number>/', views.matchPage, name="matchPage"),
     path('makeSchedule/', views.makeSchedule, name="makeSchedule"),
+    path('csv', views.export_to_csv, name="Export to CSV")
 ]
