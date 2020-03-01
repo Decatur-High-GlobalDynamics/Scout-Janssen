@@ -32,7 +32,6 @@ body {
 
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     position: relative;
-    padding-left: 0px;
     margin-left: 0px;
     width: inherit;
 }
@@ -78,6 +77,8 @@ input {
 }
 .checkbox input {
     width: 1vw;
+    padding-left: 0px;
+
 }
 
 input:placeholder-shown + label {
