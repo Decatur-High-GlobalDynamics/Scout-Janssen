@@ -1,3 +1,3 @@
 function getWSUrl(){
-    return "ws://cleverlynamedwebsite.pw:8081";
+    return "ws://frc4026.com:8443";
 }
