@@ -24,22 +24,11 @@
 	font-size: 1.3vw;
 }
 
-h3 {
-	font-size: 1.1vw;
-}
-
-input, select {
-	font-size: 0.9vw;
-}
-
 .vmenu {
 	width: 14%;
 }
 
-body {
-	background: white;
-	font-family: 'Source Sans Pro', sans-serif;
-}
+
 
 .quickselect_matches {
 	color: white !important;
