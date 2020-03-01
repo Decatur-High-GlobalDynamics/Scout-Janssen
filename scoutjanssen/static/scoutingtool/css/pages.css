@@ -114,7 +114,6 @@ body{
 }
 h2{
     text-align: center;
-    font-size: 3vw;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
@@ -133,7 +132,6 @@ h2{
 
 .fl-table {
     border-radius: .25vw;
-    font-size: 1.1vw;
     font-weight: normal;
     border: none;
     border-collapse: collapse;
@@ -151,7 +149,6 @@ h2{
 
 .fl-table td {
     border-right: 1px solid #f8f8f8;
-    font-size: 1.2vw;
 }
 
 .fl-table thead th {
