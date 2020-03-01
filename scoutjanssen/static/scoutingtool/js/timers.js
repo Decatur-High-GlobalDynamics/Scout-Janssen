@@ -50,7 +50,7 @@
           var timerElement = document.getElementById("timer0");
           timer0Loop = setInterval(function(){
             timerFor0 = timerFor0 + timeIncrements;
-            timerElement.innerHTML = (timerFor0 / 1).toFixed(2);
+            timerElement.value = (timerFor0 / 1).toFixed(2);
             timeChange();
            }, timeInterval);
         }
@@ -89,7 +89,7 @@
           var timerElement4 = document.getElementById("timer1");
           timer4Loop = setInterval(function(){
             timerFor4 = timerFor4 + timeIncrements;
-            timerElement4.innerHTML = (timerFor4 / 1).toFixed(2);
+            timerElement4.value = (timerFor4 / 1).toFixed(2);
           }, timeInterval);
         }
         break;
