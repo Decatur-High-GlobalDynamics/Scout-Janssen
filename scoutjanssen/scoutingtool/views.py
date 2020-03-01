@@ -136,7 +136,8 @@ def makeSchedule(request):
         scouters[name] = {}
     for match in range(len(matches)):
         for i in range(6):
-            data = {"bot": i}
+            team_id = Match.objects.filter(event_id = event_key).filter(number = match)[0]
+            data = {"bot": team_id}
             scouters[scouterNames[i]][str(match)] = data
             #for match, push scouter data to scouting array
         scouterNames = deque(scouterNames)
@@ -147,9 +148,6 @@ def makeSchedule(request):
         schedule = Schedule(scouter = name, data = scouters[name])
         schedule.save()
     return render(request, 'scoutingtool/index.html', {})
-        
-        
-
     #[1, 2, 3, 4, 5, 6, 7, 8, 9]
     #Take 1-6 and assign them matches 1
     #Shift scouters left 1

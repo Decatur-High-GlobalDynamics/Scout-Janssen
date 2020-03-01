@@ -151,7 +151,7 @@
     console.log(table)
     let thead = table.createTHead();
     let matchRow = table.insertRow();
-    let botRow = table.insertRow();
+    let botRow = document.createElement("tr")
     for (let match in schedule) {
         let thBot = document.createElement("th");
         let tdMatch = document.createElement("td");
@@ -163,6 +163,7 @@
         botRow.appendChild(thBot);
         matchRow.appendChild(tdMatch);
     }
+    thead.appendChild(botRow);
 </script>
 </html>
 {% endblock content %}
