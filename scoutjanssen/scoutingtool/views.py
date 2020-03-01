@@ -16,8 +16,7 @@ event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0][0]
 
 # Create your views here.
 def schedule(request):
-    schedules = Schedule.objects.values_list('data', flat=True)
-    schedules = list(schedules)
+    schedules = Schedule.objects.values()
     return render(request, 'scoutingtool/scheduler.html', schedules)
 
 def submitReport(request):
