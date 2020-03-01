@@ -16,8 +16,8 @@ event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0][0]
 
 # Create your views here.
 def schedule(request):
-    context = {'scouter': request.COOKIES["scouter_id"]}
-    return render(request, 'scoutingtool/scheduler.html', context)
+    schedules = Schedule.objects.values_list('data', flat=True)
+    return render(request, 'scoutingtool/scheduler.html', schedules)
 
 def submitReport(request):
     form_class = ScoutingForm

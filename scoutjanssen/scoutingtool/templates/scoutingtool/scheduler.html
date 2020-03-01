@@ -3,22 +3,18 @@
 {% block content %}
 
 <head>
-	<script src='{% static 'scoutingtool/js/navBar.js' %}'></script>
 	<link rel="stylesheet" type="text/css" href='{% static 'scoutingtool/css/main.css' %}'>
 	<link rel="stylesheet" href='{% static 'scoutingtool/css/scheduler.css' %}'>
-	<script src='{% static 'scoutingtool/js/scheduler.js' %}'></script>
 	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Muli|Public+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-	<br>
-	<br>
-	<br>
 	<div>
-		<p style="margin-left: 1vw; margin-top: 1vw;">format = {match number:robot}</p>
 		<p style="margin-left: 0.5vw; margin-top: 1vw;">*This page is temporary, but I don't have time to make it better.</p>
 	</div>
-
+	{% for item in schedules %}
+	<p>{{ item }}</p>
+	{% endfor %}
 	<div class="container">
 		<div class="row">
 		  <div class="col-xs-12">
