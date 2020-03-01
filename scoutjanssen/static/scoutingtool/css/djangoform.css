@@ -78,6 +78,11 @@ input {
 .checkbox input {
     width: 1vw;
 }
+
+.forminputwrapper .checkbox {
+    display: inline-block;
+}
+
 .checkbox input, label {
     padding-left: 0px !important;
 }
