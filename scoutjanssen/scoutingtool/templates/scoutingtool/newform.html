@@ -150,8 +150,8 @@
     let table = document.getElementById("scout-schedule");
     console.log(table)
     let thead = table.createTHead();
-    let matchRow = table.insertRow();
-    let botRow = document.createElement("tr")
+    let matchRow = document.createElement("tr");
+    let botRow = table.insertRow();
     for (let match in schedule) {
         let thBot = document.createElement("th");
         let tdMatch = document.createElement("td");
@@ -163,7 +163,7 @@
         botRow.appendChild(thBot);
         matchRow.appendChild(tdMatch);
     }
-    thead.appendChild(botRow);
+    thead.appendChild(matchRow);
 </script>
 </html>
 {% endblock content %}
