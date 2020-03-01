@@ -77,10 +77,10 @@ input {
 }
 .checkbox input {
     width: 1vw;
-    padding-left: 0px;
-
 }
-
+.checkbox input, label {
+    padding-left: 0px;
+}
 input:placeholder-shown + label {
   opacity: 0;
   visibility: hidden;
