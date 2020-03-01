@@ -20,15 +20,13 @@
 			  <table summary="" class="table table-bordered table-hover">
 				<caption class="text-center">Scouting Schedule:</caption>
 				<thead>
-				  <tr>
-					<th>Scouter</th>
-					<th data-priority="1">Matches</th>
-				  </tr>
 				</thead>
 				<tbody>
-					{% for item in schedules %}
+				  	{% for item in schedules %}
+					<tr>
 					<td>{{ item.scouter }}</td>
 					<td>{{ item.data }}</td>
+					</tr>
 					{% endfor %}
 				</tbody>
 			  </table>
