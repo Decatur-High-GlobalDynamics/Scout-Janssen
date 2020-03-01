@@ -151,8 +151,8 @@
     let matchRow = document.createElement("tr");
     let botRow = table.insertRow();
     for (let match in schedule) {
-        let thBot = document.createElement("th");
-        let tdMatch = document.createElement("td");
+        let thBot = document.createElement("td");
+        let tdMatch = document.createElement("th");
         let bot = (schedule[match]["bot"] + 1)
         let matchText = document.createTextNode(String(match));
         bot = document.createTextNode(String(bot));
