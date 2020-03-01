@@ -125,12 +125,12 @@
 else{
   timer()
 }*/
-setInterval(function(){
+/**setInterval(function(){
   for(var i = 0; i < 2; i++){
     //document.getElementById("timer" + i).value = document.getElementById("timer" + i).innerText; 
     document.getElementById("tiempo" + i).innerText = document.getElementById("timer" + i).innerText;
   }
-}, 100);
+}, 100);*/
 
 function fixTheStuff(){
   for(var i = 0; i < 2; i++){
