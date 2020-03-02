@@ -1,0 +1,87 @@
+body{
+    color: #949494;
+}
+.boxColor{
+    background-color: rgba(0,0,0,0.5);
+    color: #949494;
+    font-family: 'Courier New', Courier, monospace;
+    border: 0.1vw solid #222222;
+}
+#varnamelist{
+    position: absolute;
+    width: 11vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    left: 2vw;
+    top: 5vh;
+    
+}
+#mainBox{
+    position: absolute;
+    width: 70vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    left: 17vw;
+    top: 5vh;
+}
+h3{
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+h1{
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+.highlightOnHover:hover{
+    background-color: cyan;
+    color: black;
+    border-radius: 0.1vw;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+#createStatsDiv{
+    text-align: left;
+    width: 40vw;
+    border: #222222 0.1vw solid;
+    padding: 2vw;
+}
+#createStatsBox{
+    background-color: black;
+    border: #222222 0.1vw solid;
+    color: #949494;
+    width: 30vw;
+    font-family: 'Courier New', Courier, monospace;
+}
+#createStatsButton{
+    background-color: black;
+    color: #949494;
+    border: #222222 0.1vw solid;
+    font-family: 'Courier New', Courier, monospace;
+}
+#statsTitleBox{
+    background-color: black;
+    border: #222222 0.1vw solid;
+    color: #949494;
+    font-family: 'Courier New', Courier, monospace;
+}
+.leftAlign{
+    text-align: left;
+}
+.statBox{
+    border: #222222 0.1vw solid;
+    padding: 2vw;
+}
