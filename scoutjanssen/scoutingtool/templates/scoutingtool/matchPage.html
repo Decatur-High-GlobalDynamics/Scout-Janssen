@@ -31,7 +31,9 @@ table, th, td {
 <body>
 <div style="overflow-x:auto">
     <center>
-    {{ report1 }}
+    {% for i in report 1 %}
+        {{ i }}
+    {% endfor %}
     <table>
         <tr>
             <th>Team 1</th>
