@@ -6,7 +6,6 @@ body {
     margin: 0;
 }
 a {
-    font-family: 'Bebas Neue', cursive;
     text-decoration: none;
 }
 p{
@@ -17,4 +16,8 @@ p{
 
 #content-left {
     width: 80%;
+}
+
+.caption {
+    font-family: 'Bebas Neue', cursive;
 }
