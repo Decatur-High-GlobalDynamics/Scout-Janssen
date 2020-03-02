@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		.caption {
 			color: rgb(200, 200, 200);
-			font-size: 30px;
+			font-size: 27px;
 			padding-top: 2vw;
 			margin: 0;
 		}
@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 		.caption:hover {
 			transition: 0.3s;
 			color: white;
-			font-size: 40px;
+			font-size: 33px;
 		}
 		/* The sidebar menu */
 		.sidebar {
