@@ -14,3 +14,7 @@ p{
     font-family: 'Bebas Neue', cursive;
     padding-right: 2.5%;	
 }
+
+#content-left {
+    width: 80%;
+}
