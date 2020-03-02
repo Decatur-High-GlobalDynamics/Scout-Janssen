@@ -121,13 +121,14 @@ def teamPage(request, number):
 
 def matchPage(request, number):
     matchInfo = Match.objects.filter(number = number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0])
-
+    event = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
+    match_id = Match.objects.filter(number = number).filter(event_id=event)
     team2 = matchInfo[0].team2_id
     team3 = matchInfo[0].team3_id
     team4 = matchInfo[0].team4_id
     team5 = matchInfo[0].team5_id
     team6 = matchInfo[0].team6_id
-    report1 = Report.objects.filter(team_id__in = matchInfo[0].team1_id).filter(match_id__in = (Match.objects.filter(number = number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0])))
+    report1 = Report.objects.filter(team_id = matchInfo[0].team1_id).filter(match_id__in = match_id)
 
 
     return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo, 'report1' : report1})
@@ -136,7 +137,7 @@ def index(request):
     return render(request, 'scoutingtool/index.html', {})
 
 def makeSchedule(request):
-    event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0];
+    event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
     scouterNames = ["Hayden", "Andrew", "Charlotte", "Owen", "Otto", "Davis", "Aubrey", "Keon", "Kate", "Madeline", "Brooke", "Yana", "Myles", "Joseph", "Louis", "Sara", "Leo", "Rose"]
