@@ -11,7 +11,8 @@ a {
 p{
     color:#FFFFFF;
     font-family: 'Bebas Neue', cursive;
-    padding-right: 2.5%;	
+    padding-right: 2.5%;
+    margin: 10px 10px 10px;
 }
 
 #content-left {
