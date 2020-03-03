@@ -1,0 +1,26 @@
+<html>
+    <head>/static/scouting
+        <link rel="stylesheet" type="text/css" href="/static/scoutingtool/css/allStatsPage.css">
+    </head>
+    <body>
+        <h1>Navbar Here</h1>
+        <table style="width: 100%; height: 100%">
+            <tr>
+                <td style="width: 25%;">
+                    <select id="selectVar" oninput="updateTable()">
+                        
+                    </select>
+
+                    <table id="dataTable"></table>
+                </td>
+                <td>
+                    <canvas id="chart"></canvas>
+                </td>
+            </tr>
+        </table>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="/static/scoutingtool/js/constants.js"></script>
+    <script src="/static/scoutingtool/js/statsReal.js"></script>
+    <script src="/static/scoutingtool/js/statsForAll.js"></script>
+</html>
