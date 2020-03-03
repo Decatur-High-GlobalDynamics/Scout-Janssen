@@ -134,8 +134,8 @@ def matchPage(request, number):
     report1 = Report.objects.filter(team_id = "1414").filter(match_id = "115")
 
 
-    return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo}
-
+    return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo})
+    
 def index(request):
     return render(request, 'scoutingtool/index.html', {})
 
