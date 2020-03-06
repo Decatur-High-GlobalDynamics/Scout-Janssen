@@ -102,7 +102,7 @@ def syncDb(request):
     return render(request, 'scoutingtool/selectScout.html', {})
 
 def makeEvent(request):
-    d = datetime.date(2019, 11, 2)
+    d = datetime.date(2020, 3, 6)
     event = Event(name = event_key, start_date = d, end_date = d, year = 2019)
     event.save()
     return render(request, 'scoutingtool/selectScout.html', {})
@@ -143,7 +143,7 @@ def makeSchedule(request):
     event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
-    scouterNames = ["Hayden", "Andrew", "Charlotte", "Owen", "Otto", "Davis", "Aubrey", "Keon", "Kate", "Brooke", "Yana", "Myles", "Joseph", "Louis", "Sara", "Leo", "Rose", "Carter", "Max", "Eric"]
+    scouterNames = ["Hayden", "Andrew", "Charlotte", "Owen", "Otto", "Aubrey", "Keon", "Kate", "Brooke", "Yana", "Myles", "Joseph", "Louis", "Sara", "Leo", "Rose", "Carter", "Max", "Eric"]
     scouters = {}
     random.shuffle(scouterNames)
     for name in scouterNames:
