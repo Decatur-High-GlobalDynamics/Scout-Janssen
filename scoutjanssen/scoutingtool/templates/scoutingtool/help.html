@@ -1,0 +1,67 @@
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
+
+<html>
+<head>
+<style>
+body {
+  background-color: ##f0f0f0;
+}
+h1 {
+    color: black;
+    text-align:center;
+}
+p {
+    padding-left:2.5vw;
+    padding-right:2.5vw; 
+}
+th {
+    /**width: 100%;*/
+}
+</style>
+</head>
+<body>
+<div style="overflow-x:auto">
+    <center>
+        <p style="font-size: 5vw">Scouting help</p>
+        <p>*subject to change</p>
+        <div>
+            <h1>Time on Defense/Inoperable</h1>
+            <p>Time on Defense is how long they are ACTIVELY defending a bot. For example, pushing them or stopping them from scoring.</p>
+            <p>Time Inoperable is how long their light is static or how long can't move. If they are moving in circles, they are not inoperable. But that should be noted in the notes section.</p>
+        </div>
+        <div>
+            <h1>Did the cross the initiation line?</h1>
+            <p>This is if they crossed in <b>autonomous</b>.</h1>
+        </div>
+        <div>
+            <h1>Did they climb?</h1>
+            <p>If they fell, they did not climb.</p>
+            </div>
+            <div>
+            <h1>How many robots did they assist climbing?</h1>
+            <p>If they helped another robot up, change this. Otherwise, it should be 0.</p>
+        </div>
+        <div>
+            <h1>Did they park?</h1>
+            <p>If they were below the climb, but didn't, put it here.</p>
+        </div>
+        <div>
+            <h1>Mechanical issues vs. Connection issues</h1>
+            <p>Mechanical issues imply something mechanically is broken. If their arm was thrown into the stratosphere, that counts.</p>
+            <p>Connection issues are when the orange robot light is solid for an extended period of time.</p>
+        </div>
+        <div>
+            <h1>Notes section</h1>
+            <p>Anything relating to the robot.</p>
+            <p>Design of the robot is often appreciated (abnormally small, hook is broken, etc).</p>
+            <p>Talk about penalties here.</p>
+            <p>Please elaborate on defense ability if relevent.</p>
+            <p>If it is helpful for strategy, please note it.</p>
+        </div>
+    </center>
+    </div>
+</body>
+</html>
+{% endblock content %}

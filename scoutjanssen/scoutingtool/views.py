@@ -143,7 +143,7 @@ def makeSchedule(request):
     event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
-    scouterNames = ["Hayden", "Andrew", "Charlotte", "Otto", "Aubrey", "Keon", "Kate", "Yana", "Myles", "Joseph", "Louis", "Sara", "Leo", "Rose", "Carter", "Max", "Eric", "Davis", "Savar"]
+    scouterNames = ["Hayden", "Andrew", "Charlotte", "Otto", "Aubrey", "Kate", "Yana", "Myles", "Joseph", "Louis", "Sara", "Leo", "Carter", "Eric", "Davis", "Savar"]
     scouters = {}
     random.shuffle(scouterNames)
     for name in scouterNames:
@@ -169,6 +169,13 @@ def makeSchedule(request):
     #Repeat till 16 iterations
     #Reshuffle
     #Start again
+
+
+def help(request):
+    return render(request, 'scoutingtool/help.html', {})
+
+def graphs(request):
+    return render(request, 'scoutingtool/allTheTeamsReport.html', {})
 
 def export_to_csv(request):
     model_class = Report

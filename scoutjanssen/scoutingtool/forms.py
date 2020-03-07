@@ -19,6 +19,7 @@ class ScoutingForm(forms.ModelForm):
             'wheelTurn',
             'wheelColor',
             'climb',
+            'park',
             'climbAssist',
             'balanceResponsibility',
             'initiationLine', 
@@ -28,7 +29,9 @@ class ScoutingForm(forms.ModelForm):
             'bot3Defense',
             'timeInoperable',
             'notes',
-            'estimate3pt'
+            'estimate3pt',
+            'mechanicalIssues',
+            'connectionIssues',
             ]
     def __init__(self, *args, **kwargs):
         super(ScoutingForm, self).__init__(*args, **kwargs)

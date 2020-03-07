@@ -1,9 +1,29 @@
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
 <html>
+    <head>
+        <link rel="stylesheet" href='{% static 'scoutingtool/css/allStatsPage.css' %}'>
+    </head>
     <body>
-        <select id="selectVar">
-            
-        </select>
+        <table style="width: 100%; height: 100%">
+            <tr>
+                <td style="width: 25%;">
+                    <select id="selectVar" oninput="updateTable()">
+                        
+                    </select>
+
+                    <table id="dataTable"></table>
+                </td>
+                <td>
+                    <canvas id="chart"></canvas>
+                </td>
+            </tr>
+        </table>
     </body>
-    <script src="js/statsReal.js"></script>
-    <script src="js/statsForAll.js"></script>
+    <script src='{% static 'scoutingtool/js/constants.js' %}'></script>
+    <script src='{% static 'scoutingtool/js/statsReal.js' %}'></script>
+    <script src='{% static 'scoutingtool/js/statsForAll.js' %}'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </html>
+{% endblock content %}

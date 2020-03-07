@@ -48,7 +48,7 @@
 					<tbody>
 						<tr>
 							<td><input type="" name="timeOnDefense" class="timerbold" id="timer0" value="0.0"></input></td>
-							<td><input type="" name="timeBroke" class="timerbold" id="timer1" value="0.0"></input></td>
+							<td><input type="" name="timeInoperable" class="timerbold" id="timer1" value="0.0"></input></td>
 						</tr>
 					<tbody>
 				</table>
@@ -107,31 +107,43 @@
                 <label for="{{form.twoPointMissedTele.id_for_label}}">High Cells missed in teleop: </label>
                 {{form.twoPointMissedTele}}
             </div>
+            <div class="forminputwrapper">
+                <label for="{{form.estimate3pt.id_for_label}}">Roughly estimate their Inner High Cells: </label>
+                {{form.estimate3pt}}
+            </div>
         </div>
         <div class="endgame">
             <div class="forminputwrapper checkbox">
-                <label for="{{form.wheelTurn.id_for_label}}">Can they pull the handle to spin the wheel?</label>
+                <label for="{{form.wheelTurn.id_for_label}}">Did they spin the wheel?</label>
                 {{form.wheelTurn}}
             </div>
             <div class="forminputwrapper checkbox">
-                <label for="{{form.wheelColor.id_for_label}}">Can they stop on a specific color?</label>
+                <label for="{{form.wheelColor.id_for_label}}">Did they stop on a specific color?</label>
                 {{form.wheelColor}}
             </div>
             <div class="forminputwrapper checkbox">
-                <label for="{{form.climb.id_for_label}}">Can they climb?</label>
+                <label for="{{form.climb.id_for_label}}">Did they climb?</label>
                 {{form.climb}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.park.id_for_label}}">Did they park?</label>
+                {{form.park}}
             </div>
             <div class="forminputwrapper">
                 <label for="{{form.climbAssist.id_for_label}}">How many robots did they assist climbing?</label>
                 {{form.climbAssist}}
             </div>
             <div class="forminputwrapper checkbox">
-                <label for="{{form.balanceResponsibility.id_for_label}}">Could they balance?</label>
+                <label for="{{form.balanceResponsibility.id_for_label}}">Did they balance?</label>
                 {{form.balanceResponsibility}}
             </div>
-            <div class="forminputwrapper">
-                <label for="{{form.estimate3pt.id_for_label}}">Roughly estimate their 3 point scores</label>
-                {{form.estimate3pt}}
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.connectionIssues.id_for_label}}">Connection issues?</label>
+                {{form.connectionIssues}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.mechanicalIssues.id_for_label}}">Mechanical issues?</label>
+                {{form.mechanicalIssues}}
             </div>
             <div class="forminputwrapper">
                 <label for="{{form.notes.id_for_label}}">Notes</label>
