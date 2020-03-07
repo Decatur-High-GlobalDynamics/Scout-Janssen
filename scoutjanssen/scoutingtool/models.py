@@ -8,7 +8,7 @@ class Event(models.Model):
     year = models.IntegerField()
 
     def __str__(self):
-        return self.name + " " + self.year
+        return (str(self.name) + " " + str(self.year))
 
 class Team(models.Model):
     number = models.IntegerField(primary_key = True)
@@ -49,6 +49,7 @@ class Report(models.Model):
     wheelTurn = models.BooleanField()
     wheelColor = models.BooleanField()
     climb = models.BooleanField(default = False)
+    park = models.BooleanField(default = False)
     climbAssist = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(2)])
     balanceResponsibility = models.BooleanField(default = False)
     onePointMadeAuto = models.PositiveIntegerField(default = 0)
@@ -60,6 +61,8 @@ class Report(models.Model):
     bot2Defense = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
     bot3Defense = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
     timeInoperable = models.FloatField(blank = True, default = 0, validators=[MinValueValidator(0), MaxValueValidator(150)])
+    connectionIssues = models.BooleanField(default = False)
+    mechanicalIssues = models.BooleanField(default = False)
     notes = models.TextField(blank = True, max_length=100000, null=True)
     estimate3pt = models.PositiveIntegerField(default = 0)
 
@@ -69,7 +72,11 @@ class Report(models.Model):
 class CurrentScouting(models.Model):
     id = models.PositiveIntegerField(default = 1, primary_key = True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.event)
 
 class Schedule(models.Model):
     scouter = models.CharField(primary_key=True, max_length=20);
     data = models.CharField(blank = True, default='', max_length=9999);
+    def __str__(self):
+        return str(self.scouter)
