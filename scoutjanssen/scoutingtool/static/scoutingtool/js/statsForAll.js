@@ -8,6 +8,7 @@ var matchData = {};
 var teams;
 var teamData;
 var chart;
+var pieChart = false;
 
 function getTeamNum(){
     return location.href.substring(location.href.indexOf("#") + 1);
@@ -262,7 +263,7 @@ function graphData(){
 
     if(chart == undefined){
         chart = new Chart(ctx, {
-            type: 'bar',
+            type: (pieChart?"pie":"bar"),
             data: {
                 labels: teamNums,
                 datasets: [{
@@ -289,6 +290,21 @@ function graphData(){
         chart.data.labels = teamNums;
         chart.update();
     }
+}
+
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+if(getCookie("scouter_id") == undefined){
+    alert("Please sign in.");
+    window.location = "https://frc4026.com/scout/scouter";
+}
+
+if(getCookie("scouter_id") == "Zach"){
+    pieChart = true;
 }
 
 start();
