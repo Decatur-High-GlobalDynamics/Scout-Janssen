@@ -15,7 +15,9 @@
 		font-family: 'Heebo-Medium', Fallback, sans-serif !important;
 	}
 </style>
-
+<script>
+	document.onload() => {let e = 1; let title = document.getElementById('site-title'); if(Math.random() < e){ title.innerText = "Scout Janssen";} else { title.innerText = "Scout Waltonson";}}
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -45,7 +47,4 @@
 	{% block content %}{% endblock content %}
 	</div>
 </body>
-<script>
-	let e = 1; let title = document.getElementById('site-title'); if(Math.random() < e){ title.innerText = "Scout Janssen";} else { title.innerText = "Scout Waltonson";}
-</script>
 </html>
