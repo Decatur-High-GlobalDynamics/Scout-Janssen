@@ -176,9 +176,12 @@
     thead.appendChild(matchRow);
 </script>
 <script>
-    let ecrSpectrum = 'linear-gradient(to right, #7322ba, #203a43, #70e825);'
+    let ecrSpectrum = 'linear-gradient(to right, #7322ba, #203a43, #70e825)'
     if(Math.random() < 1.001){
-        document.getElementById('form-body').style.background = 'ecrSpectrum';
+        document.getElementById('form-body').style.background = ecrSpectrum;
+    }
+    else {
+        document.getElementById('form-body').style.background = 'linear-gradient(to right,#2c5364, #203a43, #0f2027)';
     }
 </script>
 </html>
