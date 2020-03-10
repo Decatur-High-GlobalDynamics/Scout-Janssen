@@ -15,4 +15,5 @@ urlpatterns = [
     path('csv', views.export_to_csv, name="Export to CSV"),
     path('help/', views.help, name="Help Page"),
     path('graphs/', views.graphs, name="AllTheTeamsStatsReport"),
+    path('removeDuplicates/', views.removeDuplicates, name="Remove Duplicate Reports")
 ]
