@@ -1,7 +1,11 @@
 from django.urls import path
 
-from . import views
+#from . import views
+urlpatterns = [
+    
+]
 
+'''
 urlpatterns = [
     path('', views.submitReport, name="submitReport"),
     path('scouter/', views.scouter, name='scouter'),
@@ -16,4 +20,4 @@ urlpatterns = [
     path('help/', views.help, name="Help Page"),
     path('graphs/', views.graphs, name="AllTheTeamsStatsReport"),
     path('removeDuplicates/', views.removeDuplicates, name="Remove Duplicate Reports")
-]
+]'''
