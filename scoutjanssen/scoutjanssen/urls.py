@@ -22,4 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('schedule/', scoutview.schedule, name="schedule"),
     path('', scoutview.index, name='submitReport'),
-]
+]'''
