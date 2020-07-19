@@ -64,8 +64,7 @@ TEMPLATE_DIRS = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            
+        'DIRS': [            
 
         ],
         'APP_DIRS': True,
@@ -88,12 +87,12 @@ WSGI_APPLICATION = 'scoutjanssen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'scoutjanssen',
-        'USER': 'django',
-        'PASSWORD': '4026',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sj',
+	'USER': 'sjuser',
+	'PASSWORD': '4026',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
 
