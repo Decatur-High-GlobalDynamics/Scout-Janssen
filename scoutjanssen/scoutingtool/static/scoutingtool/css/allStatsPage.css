@@ -1,0 +1,39 @@
+body{
+    display: block;   
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    color: #949494;
+    margin: 0px;
+    padding: 0px;
+}
+canvas{
+    width: 50%;
+    border: 1px solid #222222;
+}
+#dataTable{
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10%;
+}
+
+#dataTable tr td{
+    border: 1px #222222 solid;
+}
+
+#selectVar{
+    background-color: black;
+    border: 1px #222222 solid;
+    color: #949494;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10%;
+}
+
+h1{
+    border-bottom: 1px #222222 solid;
+    width: 100%;
+    font-size: 2vw;
+    text-align: center;
+    height: 7.5%;
+    position: absolute;
+}

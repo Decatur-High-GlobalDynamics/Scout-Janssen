@@ -1,0 +1,24 @@
+<html>
+<head>
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
+    <title>Select Scouter</title>
+    <link rel="stylesheet" href='{% static 'scoutingtool/css/scouterselect.css' %}'>
+</head>
+<body>
+    {% if scouter_id == "true" %}
+        <p>Scouter id already set</p>
+    {% endif %}
+    <div class="form">
+        <form action="" method="post">
+        {% csrf_token %}
+            <label for="scouter_id">Enter your scouter id:</label>
+            <input id="scouter_id" type="text" name="scouter_id" maxlength="20" required>
+            {{form.scouter_id}}
+            <input type="submit" value="OK">
+        </form>
+    </div>
+<body>
+</html>
+{% endblock content %}

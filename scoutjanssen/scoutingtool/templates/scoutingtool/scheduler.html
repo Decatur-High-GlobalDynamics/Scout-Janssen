@@ -1,0 +1,38 @@
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+	<link rel="stylesheet" type="text/css" href='{% static 'scoutingtool/css/main.css' %}'>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/scheduler.css' %}'>
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli|Public+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div>
+		<p style="margin-left: 0.5vw; margin-top: 1vw;">*This page is temporary, but I don't have time to make it better.</p>
+	</div>
+
+	<div class="container">
+		<div class="row">
+		  <div class="col-xs-12">
+			<div class="table-responsive" data-pattern="priority-columns">
+			  <table summary="" class="table table-bordered table-hover">
+				<caption class="text-center">Scouting Schedule:</caption>
+				<thead>
+				</thead>
+				<tbody>
+				  	{% for item in schedules %}
+					<tr>
+					<td>{{ item.scouter }}</td>
+					<td>{{ item.data }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			  </table>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</body>
+{% endblock content %}

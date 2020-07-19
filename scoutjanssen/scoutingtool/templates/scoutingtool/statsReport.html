@@ -1,0 +1,36 @@
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <link rel="stylesheet" href='{% static 'scoutingtool/css/statsReport.css' %}'>
+        <script src="{% static 'scoutingtool/js/constants.js' %}"></script>
+    </head>
+    <body>
+        <div style="position: relative">
+            <div id="varnamelist" class="boxColor noselect">
+                <h3>Data Names</h3>
+            </div>
+            <div id="mainBox" class="boxColor">
+                <h1>Stats</h1>
+                <table>
+                    <tr>
+                        <div id="createStatsDiv">
+                            <h3 class="leftAlign">Create a Stat</h3>
+                            Title: <input id="statsTitleBox" type="text"><br><br>
+                            Formula: <input id="createStatsBox" ondrop="drop(event)" ondragover="allowDrop(event)" type="text">
+                            <br>
+                            <br>
+                            <button id="createStatsButton" onclick="addStat()">Create!</button>
+                        </div>
+                    </tr>
+                </table>
+                <div id="statBoxContainer"></div>
+            </div>
+        </div>
+        <script src="{% static 'scoutingtool/js/statsReal.js' %}"></script>
+        <script src="{% static 'scoutingtool/js/coolanimation.js' %}"></script>
+        <script src="{% static 'scoutingtool/js/statsTeamController.js' %}"></script>
+    </body>
+</html>
+{% endblock content %}

@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+body {
+    background-color : #01092e; 
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+p{
+    color:#FFFFFF;
+    font-family: 'Bebas Neue', cursive;
+    padding-right: 2.5%;
+    margin: 10px 10px 10px;
+}
+
+#content-left {
+    width: 80%;
+}
+
+.caption {
+    font-family: 'Bebas Neue', cursive;
+}

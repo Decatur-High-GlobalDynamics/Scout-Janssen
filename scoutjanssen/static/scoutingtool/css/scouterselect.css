@@ -1,0 +1,11 @@
+label {
+    text-align: center;
+}
+.form {
+    font-size: 3vw;
+    width: 50vw;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+    
+}

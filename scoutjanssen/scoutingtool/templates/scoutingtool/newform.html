@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
+
+<html lang="en">
+<head>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/pages.css' %}'>
+	<link rel="stylesheet" href='{% static 'scoutingtool/css/form.css' %}'>
+    <link rel="stylesheet" href='{% static 'scoutingtool/css/djangoform.css' %}'>
+	<script src='{% static 'scoutingtool/js/cartesian.js' %}'></script>
+    <script src='{% static 'scoutingtool/js/timers.js' %}'></script>
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body id="form-body">
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div id="schedule-div">
+        <table id="scout-schedule" class="minimalistBlack"></table>
+    </div>
+<form action="" method="post">
+    {% csrf_token %}
+    	<div class="timer">
+			<div class="table-wrapper" position="center">
+				<table class="fl-table">
+					<thead>
+						<tr>
+							<th>Time on Defense (1)</th>
+							<th>Time Inoperable (2)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="" name="timeOnDefense" class="timerbold" id="timer0" value="0.0"></input></td>
+							<td><input type="" name="timeInoperable" class="timerbold" id="timer1" value="0.0"></input></td>
+						</tr>
+					<tbody>
+				</table>
+			</div>
+		</div>
+
+
+    <div id="scoutbox">
+        <div class="prematch">
+            <div class="forminputwrapper">
+                <label for="{{form.match.id_for_label}}">Match: </label>
+                {{form.match}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.team.id_for_label}}">Team: </label>
+                {{form.team}}
+            </div>
+
+        </div>
+        <div class="auto">
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.initiationLine.id_for_label}}">Did they cross the initiation line?</label>
+                {{form.initiationLine}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMadeAuto.id_for_label}}">Low Cells made in auto: </label>
+                {{form.onePointMadeAuto}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMissedAuto.id_for_label}}">Low Cells missed in auto: </label>
+                {{form.onePointMissedAuto}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMadeAuto.id_for_label}}">High Cells made in auto: </label>
+                {{form.twoPointMadeAuto}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMissedAuto.id_for_label}}">High Cells missed in auto: </label>
+                {{form.twoPointMissedAuto}}
+            </div>
+        </div>
+        <div class="teleop">
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMadeTele.id_for_label}}"> Low Cells made in teleop: </label>
+                {{form.onePointMadeTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.onePointMissedTele.id_for_label}}">Low Cells missed in teleop: </label>
+                {{form.onePointMissedTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMadeTele.id_for_label}}">High Cells made in teleop: </label>
+                {{form.twoPointMadeTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.twoPointMissedTele.id_for_label}}">High Cells missed in teleop: </label>
+                {{form.twoPointMissedTele}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.estimate3pt.id_for_label}}">Roughly estimate their Inner High Cells: </label>
+                {{form.estimate3pt}}
+            </div>
+        </div>
+        <div class="endgame">
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.wheelTurn.id_for_label}}">Did they spin the wheel?</label>
+                {{form.wheelTurn}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.wheelColor.id_for_label}}">Did they stop on a specific color?</label>
+                {{form.wheelColor}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.climb.id_for_label}}">Did they climb?</label>
+                {{form.climb}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.park.id_for_label}}">Did they park?</label>
+                {{form.park}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.climbAssist.id_for_label}}">How many robots did they assist climbing?</label>
+                {{form.climbAssist}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.balanceResponsibility.id_for_label}}">Did they balance?</label>
+                {{form.balanceResponsibility}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.connectionIssues.id_for_label}}">Connection issues?</label>
+                {{form.connectionIssues}}
+            </div>
+            <div class="forminputwrapper checkbox">
+                <label for="{{form.mechanicalIssues.id_for_label}}">Mechanical issues?</label>
+                {{form.mechanicalIssues}}
+            </div>
+            <div class="forminputwrapper">
+                <label for="{{form.notes.id_for_label}}">Notes</label>
+                {{form.notes}}
+            </div>
+        </div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+</body>
+<script>
+    let schedule_string = '{{schedule.data}}';
+    schedule_string = schedule_string.replace(/&#39;/g, '"');
+    let schedule = JSON.parse(schedule_string);
+    let table = document.getElementById("scout-schedule");
+    let thead = table.createTHead();
+    let matchRow = document.createElement("tr");
+    let botRow = table.insertRow();
+    for (let match in schedule) {
+        let thBot = document.createElement("td");
+        let tdMatch = document.createElement("th");
+        let bot = (schedule[match]["bot"])
+        let matchText = document.createTextNode(String(match));
+        bot = document.createTextNode(String(bot));
+        thBot.appendChild(bot);
+        tdMatch.appendChild(matchText);
+        botRow.appendChild(thBot);
+        matchRow.appendChild(tdMatch);
+    }
+    thead.appendChild(matchRow);
+</script>
+<script>
+    let ecrSpectrum = "linear-gradient(to right, #4a297b, #203a43, #92D050)";
+    if(Math.random() < 0.0004){
+        document.getElementById('form-body').style.background = ecrSpectrum;
+    }
+    else {
+        document.getElementById('form-body').style.background = 'linear-gradient(to right,#2c5364, #203a43, #0f2027)';
+    }
+</script>
+</html>
+{% endblock content %}

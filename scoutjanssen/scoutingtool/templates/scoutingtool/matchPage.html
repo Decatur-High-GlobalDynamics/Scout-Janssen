@@ -1,0 +1,63 @@
+{% extends "scoutingtool/base.html" %}
+{% load static %}
+{% block content %}
+
+<html>
+<head>
+<style>
+body {
+  background-color: ##f0f0f0;
+}
+th, td {
+    color: black;
+
+    text-align:center;
+}
+td {
+    padding-left:2.5vw;
+    padding-right:2.5vw; 
+}
+th {
+    /**width: 100%;*/
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div style="overflow-x:auto">
+    <center>
+    {% for i in report1 %}
+        <p>{{ i.notes }}</p>
+        <p>{{ i }}</p>
+        <script>console.log({{report1}})</script>
+    {% endfor %}
+    <table>
+        <tr>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Team 3</th>
+            <th>Team 4</th>
+            <th>Team 5</th>
+            <th>Team 6</th>
+        </tr>
+        {% for item in matchInfo %}
+        <tr> 
+            <td>{{ item.team1_id }}</td>
+            <td>{{ item.team2_id }}</td>
+            <td>{{ item.team3_id }}</td>
+            <td>{{ item.team4_id }}</td>
+            <td>{{ item.team5_id }}</td>
+            <td>{{ item.team6_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </center>
+    </div>
+</body>
+</html>
+{% endblock content %}
