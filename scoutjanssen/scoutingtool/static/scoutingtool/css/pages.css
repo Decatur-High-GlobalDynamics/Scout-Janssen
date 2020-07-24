@@ -67,29 +67,10 @@ html, body {
     padding-left: 1em;
     padding-right: 1em;
 }
-a {
+.caption a:visited, .caption a:link, .caption a, .caption a:active, .caption a:hover {
+	color: white;
 	text-decoration: none;
-    color: black;
-}
 
-a:link {
-    text-decoration: none;
-    color: black;
-}
-
-a:visited {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    text-decoration: none;
-    color: lightslategrey
-}
-
-a:active {
-    text-decoration: none;
-    color: black;
 }
 
 *{
