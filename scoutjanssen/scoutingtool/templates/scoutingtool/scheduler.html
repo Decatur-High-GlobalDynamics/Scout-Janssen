@@ -43,7 +43,7 @@
 		let nameTd = document.createElement("td");
 		let nameNode = document.createTextNode(i);
 		let dataTd = document.createElement("td");
-		readableMatches = document.createElement("p");
+		readableMatches = "";
 		for(match in scoutingData[i]){
 			readableMatches += match + ": " + scoutingData[i][match]["bot"] + ", "
 		}
