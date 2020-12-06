@@ -31,6 +31,36 @@ table, th, td {
 <body>
 <div style="overflow-x:auto">
     <center>
+        <table>
+            {{ reportsRobot1[0].team }}
+            {% for i in reportsRobot1 %}
+                <tr>
+                   <th>Scouter: {{ i.scouter }}</th> 
+                   <th>Match: {{i.match}}</th>
+                   <th>Initiation Line: {{i.initiationLine}}</th>
+                   <th>1pt Made Auto: {{i.onePointMadeAuto}}</th>
+                   <th>1pt Missed Auto: {{i.onePointMissedAuto}}</th>
+                   <th>2pt Made Auto: {{i.twoPointMadeAuto}}</th>
+                   <th>2pt Missed Auto: {{i.twoPointMissedAuto}}</th>
+                   <th>1pt Made Tele: {{i.onePointMadeTele}}</th>
+                   <th>1pt Miss Tele: {{i.onePointMissedTele}}</th>
+                   <th>2pt Made Tele: {{i.twoPointMadeTele}}</th>
+                   <th>2pt Miss Tele: {{i.twoPointMissedTele}}</th>
+                   <th>3pt Estimate: {{i.estimate3pt}}</th>
+                   <th>Time on Defense: {{i.timeOnDefense}}</th>
+                   <th>Spin Wheel: {{i.wheelTurn}}</th>
+                   <th>Spin Wheel to Color: {{i.wheelColor}}</th>
+                   <th>Climb: {{i.climb}}</th>
+                   <th>Park: {{i.park}}</th>
+                   <th>Assist Other Robot Climb: {{i.climbAssist}}</th>
+                   <th>Responsible for Balance: {{i.balanceResponsibility}}</th>
+                   <th>Connection Issues: {{i.connectionIssues}}</th>
+                   <th>Mechanical Issues: {{i.mechanicalIssues}}</th>
+                   <th>Notes: {{i.notes}}</th>
+                </tr>
+            {% endfor %}
+            
+        </table>
     {% for i in reportsRobot1 %}
         <p>{{ i.notes }}</p>
         <p>{{ i }}</p>
