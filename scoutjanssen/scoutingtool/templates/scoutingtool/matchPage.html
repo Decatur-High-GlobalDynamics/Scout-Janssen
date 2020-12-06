@@ -59,7 +59,33 @@ table, th, td {
             <script>console.log('{{reportsRobots}}')</script>
             {% for report in reportsRobots %}
                 <script>console.log('{{report}}')</script>
-                
+                {% for i in report %}
+                    <tr>
+                        <td>{{i.team}}</td>
+                        <td>{{i.match}}</td>
+                        <td>{{i.scouter}}</td>
+                        <td>{{i.initiationLine}}</td>
+                        <td>{{i.onePointMadeAuto}}</td>
+                        <td>{{i.onePointMissedAuto}}</td>
+                        <td>{{i.twoPointMadeAuto}}</td>
+                        <td>{{i.twoPointMissedAuto}}</td>
+                        <td>{{i.onePointMadeTele}}</td>
+                        <td>{{i.onePointMissedTele}}</td>
+                        <td>{{i.twoPointMadeTele}}</td>
+                        <td>{{i.twoPointMissedTele}}</td>
+                        <td>{{i.estimate3pt}}</td>
+                        <td>{{i.timeOnDefense}}</td>
+                        <td>{{i.wheelTurn}}</td>
+                        <td>{{i.wheelColor}}</td>
+                        <td>{{i.climb}}</td>
+                        <td>{{i.park}}</td>
+                        <td>{{i.climbAssist}}</td>
+                        <td>{{i.balanceResponsibility}}</td>
+                        <td>{{i.connectionIssues}}</td>
+                        <td>{{i.mechanicalIssues}}</td>
+                        <td>{{i.notes}}</td>
+                    </tr>
+                {% endfor %}
             {% endfor %}
         </table>
     <table>
