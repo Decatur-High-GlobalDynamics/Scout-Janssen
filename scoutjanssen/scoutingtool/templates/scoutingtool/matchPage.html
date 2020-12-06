@@ -32,33 +32,35 @@ table, th, td {
 <div style="overflow-x:auto">
     <center>
         <table>
-            
-            <h3>{{ item.team1_id }}</h3>
+            {% for item in matchInfo %}
+                <h3>{{ item.team1_id }}</h3>
+            {% endfor %}
+            <tr>
+                <th>Scouter</th> 
+                <th>Match</th>
+                <th>Initiation Line</th>
+                <th>1pt Made Auto</th>
+                <th>1pt Missed Auto</th>
+                <th>2pt Made Auto</th>
+                <th>2pt Missed Auto</th>
+                <th>1pt Made Tele</th>
+                <th>1pt Miss Tele</th>
+                <th>2pt Made Tele</th>
+                <th>2pt Miss Tele</th>
+                <th>3pt Estimate</th>
+                <th>Time on Defense</th>
+                <th>Spin Wheel</th>
+                <th>Spin Wheel to Color</th>
+                <th>Climb</th>
+                <th>Park</th>
+                <th>Assist Other Robot Climb</th>
+                <th>Responsible for Balance</th>
+                <th>Connection Issues</th>
+                <th>Mechanical Issues</th>
+                <th>Notes</th>
+             </tr>
             {% for i in reportsRobot1 %}
-                <tr>
-                   <th>Scouter</th> 
-                   <th>Match</th>
-                   <th>Initiation Line</th>
-                   <th>1pt Made Auto</th>
-                   <th>1pt Missed Auto</th>
-                   <th>2pt Made Auto</th>
-                   <th>2pt Missed Auto</th>
-                   <th>1pt Made Tele</th>
-                   <th>1pt Miss Tele</th>
-                   <th>2pt Made Tele</th>
-                   <th>2pt Miss Tele</th>
-                   <th>3pt Estimate</th>
-                   <th>Time on Defense</th>
-                   <th>Spin Wheel</th>
-                   <th>Spin Wheel to Color</th>
-                   <th>Climb</th>
-                   <th>Park</th>
-                   <th>Assist Other Robot Climb</th>
-                   <th>Responsible for Balance</th>
-                   <th>Connection Issues</th>
-                   <th>Mechanical Issues</th>
-                   <th>Notes</th>
-                </tr>
+                
                 <tr>
                     <td>{{ i.scouter }}</td>
                     <td>{{i.match}}</td>
