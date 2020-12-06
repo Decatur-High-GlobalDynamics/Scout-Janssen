@@ -67,7 +67,7 @@ class Report(models.Model):
     estimate3pt = models.PositiveIntegerField(default = 0)
 
     def __str__(self):
-        return str(self.scouter + self.match)
+        return str(self.scouter + self.match.number)
 
 class CurrentScouting(models.Model):
     id = models.PositiveIntegerField(default = 1, primary_key = True)
