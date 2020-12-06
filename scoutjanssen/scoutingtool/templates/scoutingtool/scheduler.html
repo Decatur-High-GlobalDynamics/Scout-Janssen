@@ -41,7 +41,7 @@
 		scoutingData[i] = JSON.parse(scoutingData[i].replaceAll("&#39;", '"'));
 		let tr = document.createElement("tr");
 		let nameTd = document.createElement("td");
-		let nameNode = i;
+		let nameNode = String(i);
 		let dataTd = document.createElement("td");
 		let dataNode = scoutingData[i];
 		nameTd.appendChild(nameNode);
