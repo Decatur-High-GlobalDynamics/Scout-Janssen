@@ -22,6 +22,8 @@ def schedule(request):
     return render(request, 'scoutingtool/scheduler.html', {'schedules' : schedules})
 
 def submitReport(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     form_class = ScoutingForm
     if "scouter_id" in request.COOKIES:
         if(request.method == 'POST'):
