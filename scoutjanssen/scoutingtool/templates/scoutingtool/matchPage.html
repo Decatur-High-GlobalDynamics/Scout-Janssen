@@ -57,9 +57,9 @@ table, th, td {
                 <th>Notes</th>
              </tr>
             
-            {% for report in reportsRobots %}
+            {% for i in reportsRobots %}
                 
-                {% for i in report %}
+
                 <script>console.log('{{i}}')</script>
                     <tr>
                         <td>{{i.team}}</td>
@@ -86,7 +86,6 @@ table, th, td {
                         <td>{{i.mechanicalIssues}}</td>
                         <td>{{i.notes}}</td>
                     </tr>
-                {% endfor %}
             {% endfor %}
         </table>
     <table>
