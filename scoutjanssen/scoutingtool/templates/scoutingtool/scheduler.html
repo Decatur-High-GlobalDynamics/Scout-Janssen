@@ -32,7 +32,7 @@
 </body>
 <script>
 	scoutingData = {};
-	let head = $('#schedule-table-head');
+	let head = document.getElementById("schedule-table-head");
 	{% for item in schedules %}
 		scoutingData['{{item.scouter}}'] = ('{{item.data}}');
 		
