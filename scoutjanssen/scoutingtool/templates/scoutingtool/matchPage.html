@@ -56,7 +56,9 @@ table, th, td {
                 <th>Mechanical Issues</th>
                 <th>Notes</th>
              </tr>
+            <script>console.log('{{reportsRobots}}')</script>
             {% for report in reportsRobots %}
+                <script>console.log('{{report}}')</script>
                 {% for i in report %}
                     <tr>
                         <td>{{i.team}}</td>
