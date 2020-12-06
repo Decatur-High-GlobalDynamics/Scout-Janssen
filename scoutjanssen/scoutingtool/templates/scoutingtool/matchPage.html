@@ -36,37 +36,55 @@ table, th, td {
             <h3>{{ item.team1_id }}</h3>
             {% for i in reportsRobot1 %}
                 <tr>
-                   <th>Scouter: {{ i.scouter }}</th> 
-                   <th>Match: {{i.match}}</th>
-                   <th>Initiation Line: {{i.initiationLine}}</th>
-                   <th>1pt Made Auto: {{i.onePointMadeAuto}}</th>
-                   <th>1pt Missed Auto: {{i.onePointMissedAuto}}</th>
-                   <th>2pt Made Auto: {{i.twoPointMadeAuto}}</th>
-                   <th>2pt Missed Auto: {{i.twoPointMissedAuto}}</th>
-                   <th>1pt Made Tele: {{i.onePointMadeTele}}</th>
-                   <th>1pt Miss Tele: {{i.onePointMissedTele}}</th>
-                   <th>2pt Made Tele: {{i.twoPointMadeTele}}</th>
-                   <th>2pt Miss Tele: {{i.twoPointMissedTele}}</th>
-                   <th>3pt Estimate: {{i.estimate3pt}}</th>
-                   <th>Time on Defense: {{i.timeOnDefense}}</th>
-                   <th>Spin Wheel: {{i.wheelTurn}}</th>
-                   <th>Spin Wheel to Color: {{i.wheelColor}}</th>
-                   <th>Climb: {{i.climb}}</th>
-                   <th>Park: {{i.park}}</th>
-                   <th>Assist Other Robot Climb: {{i.climbAssist}}</th>
-                   <th>Responsible for Balance: {{i.balanceResponsibility}}</th>
-                   <th>Connection Issues: {{i.connectionIssues}}</th>
-                   <th>Mechanical Issues: {{i.mechanicalIssues}}</th>
-                   <th>notes: {{i.notes}}</th>
+                   <th>Scouter</th> 
+                   <th>Match</th>
+                   <th>Initiation Line</th>
+                   <th>1pt Made Auto</th>
+                   <th>1pt Missed Auto</th>
+                   <th>2pt Made Auto</th>
+                   <th>2pt Missed Auto</th>
+                   <th>1pt Made Tele</th>
+                   <th>1pt Miss Tele</th>
+                   <th>2pt Made Tele</th>
+                   <th>2pt Miss Tele</th>
+                   <th>3pt Estimate</th>
+                   <th>Time on Defense</th>
+                   <th>Spin Wheel</th>
+                   <th>Spin Wheel to Color</th>
+                   <th>Climb</th>
+                   <th>Park</th>
+                   <th>Assist Other Robot Climb</th>
+                   <th>Responsible for Balance</th>
+                   <th>Connection Issues</th>
+                   <th>Mechanical Issues</th>
+                   <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>{{ i.scouter }}</td>
+                    <td>{{i.match}}</td>
+                    <td>{{i.initiationLine}}</td>
+                    <td>{{i.onePointMadeAuto}}</td>
+                    <td>{{i.onePointMissedAuto}}</td>
+                    <td>{{i.twoPointMadeAuto}}</td>
+                    <td>{{i.twoPointMissedAuto}}</td>
+                    <td>{{i.onePointMadeTele}}</td>
+                    <td>{{i.onePointMissedTele}}</td>
+                    <td>{{i.twoPointMadeTele}}</td>
+                    <td>{{i.twoPointMissedTele}}</td>
+                    <td>{{i.estimate3pt}}</td>
+                    <td>{{i.timeOnDefense}}</td>
+                    <td>{{i.wheelTurn}}</td>
+                    <td>{{i.wheelColor}}</td>
+                    <td>{{i.climb}}</td>
+                    <td>{{i.park}}</td>
+                    <td>{{i.climbAssist}}</td>
+                    <td>{{i.balanceResponsibility}}</td>
+                    <td>{{i.connectionIssues}}</td>
+                    <td>{{i.mechanicalIssues}}</td>
+                    <td>{{i.notes}}</td>
                 </tr>
             {% endfor %}
-            
         </table>
-    {% for i in reportsRobot1 %}
-        <p>{{ i.notes }}</p>
-        <p>{{ i }}</p>
-        <script>console.log('{{reportsRobot1}}')</script>
-    {% endfor %}
     <table>
         <tr>
             <th>Team 1</th>
