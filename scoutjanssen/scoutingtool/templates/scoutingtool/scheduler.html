@@ -38,7 +38,7 @@
 <script>
 	scoutingData = {}
 	{% for item in schedules %}
-		scoutingData['{{item.scouter}}'] = JSON.parse('{{item.data}}')
+		scoutingData['{{item.scouter}}'] = ('{{item.data}}')
 		
 	{% endfor %}
 	console.log(scoutingData)
