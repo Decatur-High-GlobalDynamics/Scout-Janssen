@@ -38,7 +38,7 @@
 <script>
 	scoutingData = {}
 	{% for item in schedules %}
-		scoutingData['{{item.scouter}}'] = ('{{item.data}}').replace("&%39;", "'")
+		scoutingData['{{item.scouter}}'] = ('{{item.data}}').replaceAll("&%39;", "'")
 		
 	{% endfor %}
 	console.log(scoutingData)
