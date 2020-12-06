@@ -33,6 +33,26 @@ table, th, td {
     <center>
         <table>
             <tr>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Team 3</th>
+                <th>Team 4</th>
+                <th>Team 5</th>
+                <th>Team 6</th>
+            </tr>
+            {% for item in matchInfo %}
+            <tr> 
+                <td>{{ item.team1_id }}</td>
+                <td>{{ item.team2_id }}</td>
+                <td>{{ item.team3_id }}</td>
+                <td>{{ item.team4_id }}</td>
+                <td>{{ item.team5_id }}</td>
+                <td>{{ item.team6_id }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <tr>
                 <th>Team</th>
                 <th>Scouter</th> 
                 <th>Initiation Line</th>
@@ -88,26 +108,6 @@ table, th, td {
                     </tr>
             {% endfor %}
         </table>
-    <table>
-        <tr>
-            <th>Team 1</th>
-            <th>Team 2</th>
-            <th>Team 3</th>
-            <th>Team 4</th>
-            <th>Team 5</th>
-            <th>Team 6</th>
-        </tr>
-        {% for item in matchInfo %}
-        <tr> 
-            <td>{{ item.team1_id }}</td>
-            <td>{{ item.team2_id }}</td>
-            <td>{{ item.team3_id }}</td>
-            <td>{{ item.team4_id }}</td>
-            <td>{{ item.team5_id }}</td>
-            <td>{{ item.team6_id }}</td>
-        </tr>
-        {% endfor %}
-    </table>
     </center>
     </div>
 </body>
