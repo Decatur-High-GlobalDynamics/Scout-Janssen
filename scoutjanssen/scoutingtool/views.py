@@ -138,9 +138,9 @@ def matchPage(request, number):
     team4 = matchInfo[0].team4_id
     team5 = matchInfo[0].team5_id
     team6 = matchInfo[0].team6_id
-    reportsRobot1 = Report.objects.filter(team_id = team1)
+    reportsRobot1 = Report.objects.filter(team_id = team1).filter(match_id = match_id)
     
-    
+
     return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo, 'reportsRobot1': reportsRobot1})
     
 def index(request):
