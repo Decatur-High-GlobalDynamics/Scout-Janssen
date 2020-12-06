@@ -36,6 +36,9 @@
 	  </div>
 </body>
 <script>
-	console.log('{{schedules}}');
+	{% for item in schedules %}
+		console.log('{{item}}')	
+	{% endfor %}
+
 </script>
 {% endblock content %}
