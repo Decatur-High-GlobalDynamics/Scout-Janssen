@@ -38,12 +38,11 @@
 <script>
 	scoutingData = {}
 	{% for item in schedules %}
-		scoutingData['{{item.scouter}}'] = ('{{item.data}}').replaceAll("&%39;", "'")
-		console.log(('{{item.data}}').replaceAll("&%39;", "'"))
+		scoutingData['{{item.scouter}}'] = ('{{item.data}}')
 		
 	{% endfor %}
 	for(i in scoutingData){
-		console.log("el" + i)
+		scoutingData[i] = scoutingData[i].replaceAll("&%39;", "'")
 	}
 	console.log(scoutingData)
 </script>
