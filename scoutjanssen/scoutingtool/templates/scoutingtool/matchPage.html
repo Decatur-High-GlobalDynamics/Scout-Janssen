@@ -32,7 +32,8 @@ table, th, td {
 <div style="overflow-x:auto">
     <center>
         <table>
-            {{ reportsRobot1[0].team }}
+            
+            <h3>{{ item.team1_id }}</h3>
             {% for i in reportsRobot1 %}
                 <tr>
                    <th>Scouter: {{ i.scouter }}</th> 
@@ -56,7 +57,7 @@ table, th, td {
                    <th>Responsible for Balance: {{i.balanceResponsibility}}</th>
                    <th>Connection Issues: {{i.connectionIssues}}</th>
                    <th>Mechanical Issues: {{i.mechanicalIssues}}</th>
-                   <th>Notes: {{i.notes}}</th>
+                   <th>notes: {{i.notes}}</th>
                 </tr>
             {% endfor %}
             
