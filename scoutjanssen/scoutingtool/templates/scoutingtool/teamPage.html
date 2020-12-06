@@ -30,6 +30,12 @@ table, th, td {
 </head>
 <body>
 <div style="overflow-x:auto">
+    <div style="display: flex; align-items: center;">
+        <p style="margin: 0; padding-right: 5px;">Team Number: </p>
+        <input type="text" id="team-select"/>
+        <input type="submit" onclick="window.location='https://frc4026.com/scout/team/' + $('#team-select').val()">
+    </div>
+    <br>
     <table>
         <tr>
             <th>Scouter</th>
