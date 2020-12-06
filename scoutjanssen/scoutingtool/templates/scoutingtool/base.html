@@ -42,9 +42,7 @@
 		<li><a href="https://frc4026.com/scout/help">Help</a></li>
 		<li>
 			{% if user.is_authenticated %}
-			<form action="/accounts/logout/" method="POST">
-				<a href="" onclick="this.parentNode.submit()">Logout</a>
-			</form>
+			<a href="{% url 'account_logout' %}">Logout</a>
 			{% else %}
 			<a href="{% provider_login_url 'google' %}">Login</a>
 			{% endif %}

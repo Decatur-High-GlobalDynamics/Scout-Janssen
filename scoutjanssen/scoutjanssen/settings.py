@@ -110,6 +110,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True;
 LOGIN_REDIRECT_URL = "https://frc4026.com/"
+ACCOUNT_LOGOUT_ON_GET = True;
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
