@@ -32,12 +32,9 @@ table, th, td {
 <div style="overflow-x:auto">
     <center>
         <table>
-            {% for item in matchInfo %}
-                <h3>{{ item.team1_id }}</h3>
-            {% endfor %}
             <tr>
+                <th>Team</th>
                 <th>Scouter</th> 
-                <th>Match</th>
                 <th>Initiation Line</th>
                 <th>1pt Made Auto</th>
                 <th>1pt Missed Auto</th>
@@ -59,32 +56,34 @@ table, th, td {
                 <th>Mechanical Issues</th>
                 <th>Notes</th>
              </tr>
-            {% for i in reportsRobot1 %}
-                
-                <tr>
-                    <td>{{ i.scouter }}</td>
-                    <td>{{i.match}}</td>
-                    <td>{{i.initiationLine}}</td>
-                    <td>{{i.onePointMadeAuto}}</td>
-                    <td>{{i.onePointMissedAuto}}</td>
-                    <td>{{i.twoPointMadeAuto}}</td>
-                    <td>{{i.twoPointMissedAuto}}</td>
-                    <td>{{i.onePointMadeTele}}</td>
-                    <td>{{i.onePointMissedTele}}</td>
-                    <td>{{i.twoPointMadeTele}}</td>
-                    <td>{{i.twoPointMissedTele}}</td>
-                    <td>{{i.estimate3pt}}</td>
-                    <td>{{i.timeOnDefense}}</td>
-                    <td>{{i.wheelTurn}}</td>
-                    <td>{{i.wheelColor}}</td>
-                    <td>{{i.climb}}</td>
-                    <td>{{i.park}}</td>
-                    <td>{{i.climbAssist}}</td>
-                    <td>{{i.balanceResponsibility}}</td>
-                    <td>{{i.connectionIssues}}</td>
-                    <td>{{i.mechanicalIssues}}</td>
-                    <td>{{i.notes}}</td>
-                </tr>
+            {% for report in reportsRobots %}
+                {% for i in report %}
+                    <tr>
+                        <td>{{i.team}}</td>
+                        <td>{{i.match}}</td>
+                        <td>{{i.scouter}}</td>
+                        <td>{{i.initiationLine}}</td>
+                        <td>{{i.onePointMadeAuto}}</td>
+                        <td>{{i.onePointMissedAuto}}</td>
+                        <td>{{i.twoPointMadeAuto}}</td>
+                        <td>{{i.twoPointMissedAuto}}</td>
+                        <td>{{i.onePointMadeTele}}</td>
+                        <td>{{i.onePointMissedTele}}</td>
+                        <td>{{i.twoPointMadeTele}}</td>
+                        <td>{{i.twoPointMissedTele}}</td>
+                        <td>{{i.estimate3pt}}</td>
+                        <td>{{i.timeOnDefense}}</td>
+                        <td>{{i.wheelTurn}}</td>
+                        <td>{{i.wheelColor}}</td>
+                        <td>{{i.climb}}</td>
+                        <td>{{i.park}}</td>
+                        <td>{{i.climbAssist}}</td>
+                        <td>{{i.balanceResponsibility}}</td>
+                        <td>{{i.connectionIssues}}</td>
+                        <td>{{i.mechanicalIssues}}</td>
+                        <td>{{i.notes}}</td>
+                    </tr>
+                {% endfor %}
             {% endfor %}
         </table>
     <table>
