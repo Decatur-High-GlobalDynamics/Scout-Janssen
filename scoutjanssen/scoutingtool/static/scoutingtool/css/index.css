@@ -1,24 +1,38 @@
 @import url("https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap");
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
+html {
+    font-family: 'Heebo-Medium', Fallback, sans-serif !important;
+    
+}
+
 body {
-    background-color : #01092e; 
-    margin: 0;
-}
-a {
-    text-decoration: none;
-}
-p{
-    color:#FFFFFF;
-    font-family: 'Bebas Neue', cursive;
-    padding-right: 2.5%;
-    margin: 10px 10px 10px;
+    background-color: #1a1a1a !important;
+    color: white !important;
 }
 
-#content-left {
-    width: 80%;
+#margin-frame {
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.caption {
-    font-family: 'Bebas Neue', cursive;
+#GD-Logo {
+    margin-bottom: 20px;
+    height: calc(80px + 4vw)
+}
+
+.index-head {
+    
+    text-align: center;
+}
+#sponsors {
+    padding: 0;
+}
+
+.quote {
+    font-size: calc(15px + 0.5vw);
+}
+
+.url {
+    color: rgb(212, 206, 121);
 }
