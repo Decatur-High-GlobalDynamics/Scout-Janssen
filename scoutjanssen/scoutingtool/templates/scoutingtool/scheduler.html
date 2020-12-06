@@ -43,7 +43,11 @@
 		let nameTd = document.createElement("td");
 		let nameNode = document.createTextNode(i);
 		let dataTd = document.createElement("td");
-		let dataNode = document.createTextNode(scoutingData[i]);
+		readableMatches = document.createElement("p");
+		for(match in scoutingData[i]){
+			readableMatches += match + ": " + scoutingData[i][match]["bot"] + ", "
+		}
+		let dataNode = document.createTextNode(readableMatches);
 		nameTd.appendChild(nameNode);
 		dataTd.appendChild(dataNode);
 		tr.appendChild(nameTd);
