@@ -21,13 +21,8 @@
 				<caption class="text-center">Scouting Schedule:</caption>
 				<thead>
 				</thead>
-				<tbody>
-				  	{% for item in schedules %}
-					<tr>
-					<td>{{ item.scouter }}</td>
-					<td>{{ item.data }}</td>
-					</tr>
-					{% endfor %}
+				<tbody id="schedule-table-head">
+				  	
 				</tbody>
 			  </table>
 			</div>
@@ -36,14 +31,26 @@
 	  </div>
 </body>
 <script>
-	scoutingData = {}
+	scoutingData = {};
+	let head = $('#schedule-table-head');
 	{% for item in schedules %}
-		scoutingData['{{item.scouter}}'] = ('{{item.data}}')
+		scoutingData['{{item.scouter}}'] = ('{{item.data}}');
 		
 	{% endfor %}
 	for(i in scoutingData){
-		scoutingData[i] = JSON.parse(scoutingData[i].replaceAll("&#39;", '"'))
+		scoutingData[i] = JSON.parse(scoutingData[i].replaceAll("&#39;", '"'));
+		let tr = document.createElement("tr");
+		let nameTd = document.createElement("td");
+		let nameNode = i;
+		let dataTd = document.createElement("td");
+		let dataNode = scoutingData[i];
+		nameTd.appendChild(nameNode);
+		dataTd.appendChild(dataNode);
+		tr.appendChild(nameTd);
+		tr.appendChild(dataTd);
+		head.appendChild(tr);
 	}
+	
 	console.log(scoutingData)
 </script>
 {% endblock content %}
