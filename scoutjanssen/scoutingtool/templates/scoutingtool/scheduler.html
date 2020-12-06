@@ -43,9 +43,9 @@
 		let nameTd = document.createElement("td");
 		let nameNode = document.createTextNode(i);
 		let dataTd = document.createElement("td");
-		readableMatches = ""
+		readableMatches = document.createElement("p");
 		for(match in scoutingData[i]){
-			readableMatches += match + ": " + scoutingData[i][match]["bot"] + ", "
+			readableMatches.appendChild(document.createTextNode(match + ": " + scoutingData[i][match]["bot"] + "\n"))
 		}
 		let dataNode = document.createTextNode(readableMatches);
 		nameTd.appendChild(nameNode);
