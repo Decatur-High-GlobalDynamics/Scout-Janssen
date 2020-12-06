@@ -108,7 +108,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
+ACCOUNT_EMAIL_REQUIRED = True;
+LOGIN_REDIRECT_URL = "https://frc4026.com/"
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -119,9 +120,14 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': '28225922030-o58lbql71scvj1cl55n6bl75fln2dr8f.apps.googleusercontent.com',
             'secret': config('CLIENT_SECRET_OAUTH_GOOGLE'),
             'key': ''
-        }
+        },
+        "SCOPE": [
+            "profile",
+            "email",
+        ]
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
