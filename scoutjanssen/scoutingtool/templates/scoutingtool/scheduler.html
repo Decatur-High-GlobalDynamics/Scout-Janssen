@@ -42,7 +42,7 @@
 		
 	{% endfor %}
 	for(i in scoutingData){
-		scoutingData[i] = scoutingData[i].replaceAll("&%39;", "'")
+		scoutingData[i] = scoutingData[i].replaceAll("&#39;", "'")
 	}
 	console.log(scoutingData)
 </script>
