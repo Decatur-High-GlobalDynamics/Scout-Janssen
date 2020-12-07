@@ -30,32 +30,90 @@ table, th, td {
 </head>
 <body>
 <div style="overflow-x:auto">
+    <div style="display: flex; align-items: center;">
+        <p style="margin: 0; padding-right: 5px;">Match Number: </p>
+        <input type="text" id="match-select"/>
+        <input type="submit" onclick="window.location='https://frc4026.com/scout/match/' + $('#match-select').val()">
+    </div>
+    <br>
     <center>
-    {% for i in report1 %}
-        <p>{{ i.notes }}</p>
-        <p>{{ i }}</p>
-        <script>console.log({{report1}})</script>
-    {% endfor %}
-    <table>
-        <tr>
-            <th>Team 1</th>
-            <th>Team 2</th>
-            <th>Team 3</th>
-            <th>Team 4</th>
-            <th>Team 5</th>
-            <th>Team 6</th>
-        </tr>
-        {% for item in matchInfo %}
-        <tr> 
-            <td>{{ item.team1_id }}</td>
-            <td>{{ item.team2_id }}</td>
-            <td>{{ item.team3_id }}</td>
-            <td>{{ item.team4_id }}</td>
-            <td>{{ item.team5_id }}</td>
-            <td>{{ item.team6_id }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <table>
+            <tr>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Team 3</th>
+                <th>Team 4</th>
+                <th>Team 5</th>
+                <th>Team 6</th>
+            </tr>
+            {% for item in matchInfo %}
+            <tr> 
+                <td>{{ item.team1_id }}</td>
+                <td>{{ item.team2_id }}</td>
+                <td>{{ item.team3_id }}</td>
+                <td>{{ item.team4_id }}</td>
+                <td>{{ item.team5_id }}</td>
+                <td>{{ item.team6_id }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <table>
+            <tr>
+                <th>Team</th>
+                <th>Scouter</th> 
+                <th>Initiation Line</th>
+                <th>1pt Made Auto</th>
+                <th>1pt Missed Auto</th>
+                <th>2pt Made Auto</th>
+                <th>2pt Missed Auto</th>
+                <th>1pt Made Tele</th>
+                <th>1pt Miss Tele</th>
+                <th>2pt Made Tele</th>
+                <th>2pt Miss Tele</th>
+                <th>3pt Estimate</th>
+                <th>Time on Defense</th>
+                <th>Spin Wheel</th>
+                <th>Spin Wheel to Color</th>
+                <th>Climb</th>
+                <th>Park</th>
+                <th>Assist Other Robot Climb</th>
+                <th>Responsible for Balance</th>
+                <th>Connection Issues</th>
+                <th>Mechanical Issues</th>
+                <th>Notes</th>
+             </tr>
+            
+            {% for i in reportsRobots %}
+                
+
+                <script>console.log('{{i}}')</script>
+                    <tr>
+                        <td>{{i.team_id}}</td>
+                        <td>{{i.scouter}}</td>
+                        <td>{{i.initiationLine}}</td>
+                        <td>{{i.onePointMadeAuto}}</td>
+                        <td>{{i.onePointMissedAuto}}</td>
+                        <td>{{i.twoPointMadeAuto}}</td>
+                        <td>{{i.twoPointMissedAuto}}</td>
+                        <td>{{i.onePointMadeTele}}</td>
+                        <td>{{i.onePointMissedTele}}</td>
+                        <td>{{i.twoPointMadeTele}}</td>
+                        <td>{{i.twoPointMissedTele}}</td>
+                        <td>{{i.estimate3pt}}</td>
+                        <td>{{i.timeOnDefense}}</td>
+                        <td>{{i.wheelTurn}}</td>
+                        <td>{{i.wheelColor}}</td>
+                        <td>{{i.climb}}</td>
+                        <td>{{i.park}}</td>
+                        <td>{{i.climbAssist}}</td>
+                        <td>{{i.balanceResponsibility}}</td>
+                        <td>{{i.connectionIssues}}</td>
+                        <td>{{i.mechanicalIssues}}</td>
+                        <td>{{i.notes}}</td>
+                    </tr>
+            {% endfor %}
+        </table>
     </center>
     </div>
 </body>

@@ -17,9 +17,13 @@ event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0][0]
 # Create your views here.
 def schedule(request):
     schedules = Schedule.objects.all()
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/scheduler.html', {'schedules' : schedules})
 
 def submitReport(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     form_class = ScoutingForm
     if "scouter_id" in request.COOKIES:
         if(request.method == 'POST'):
@@ -45,6 +49,8 @@ def submitReport(request):
 
 
 def scouter(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     form = ScouterForm(event_key)
     if "scouter_id" in request.COOKIES:
         response = render(request, 'scoutingtool/selectScout.html', {
@@ -67,6 +73,8 @@ def scouter(request):
         return response
 
 def removeDuplicates(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     real_report_ids = Report.objects.distinct("match_id").distinct("team_id").values('id')
     bad_reports = Report.objects.exclude(id__in = real_report_ids)
     bad_reports.delete()
@@ -75,6 +83,8 @@ def removeDuplicates(request):
 
    
 def syncDb(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     #GET TEAMS
     response = requests.get('https://www.thebluealliance.com/api/v3/event/' + event_key + '/teams', headers=headers)
     data = response.json()
@@ -109,24 +119,34 @@ def syncDb(request):
     return render(request, 'scoutingtool/selectScout.html', {})
 
 def makeEvent(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     d = datetime.date(2020, 3, 6)
     event = Event(name = event_key, start_date = d, end_date = d, year = 2019)
     event.save()
     return render(request, 'scoutingtool/selectScout.html', {})
 
 def report(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/statsReport.html', {})
 
 def exportDb(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     data = serializers.serialize("json", Report.objects.all());
     return HttpResponse(data)
 
 def teamPage(request, number):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     teamInfo = Report.objects.filter(team_id = number)
     #print("Reports found with team " + str(number) + ": " + str(teamInfo.count()))
     return render(request, 'scoutingtool/teamPage.html', {'teamInfo' : teamInfo})
 
 def matchPage(request, number):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     matchInfo = Match.objects.filter(number = number).filter(event_id=CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0])
     event = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     match_id = Match.objects.filter(number = number).filter(event_id=event).values_list('id')[0][0]
@@ -138,15 +158,18 @@ def matchPage(request, number):
     team4 = matchInfo[0].team4_id
     team5 = matchInfo[0].team5_id
     team6 = matchInfo[0].team6_id
-    report1 = Report.objects.filter(team_id = "1414").filter(match_id = "115")
-
-
-    return render(request, 'scoutingtool/matchPage.html', {'matchInfo' : matchInfo})
+    reportsRobots = Report.objects.filter(match_id = match_id).values()
+    return render(request, 'scoutingtool/matchPage.html', {
+        'matchInfo' : matchInfo, 
+        'reportsRobots': reportsRobots 
+        })
     
 def index(request):
     return render(request, 'scoutingtool/index.html', {})
 
 def makeSchedule(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
@@ -179,9 +202,13 @@ def makeSchedule(request):
 
 
 def help(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/help.html', {})
 
 def graphs(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/allTheTeamsReport.html', {})
 
 def export_to_csv(request):
@@ -197,5 +224,6 @@ def export_to_csv(request):
     writer.writerow(field_names)
     for obj in model_class.objects.all():
         row = writer.writerow([getattr(obj, field) for field in field_names])
-
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
     return response

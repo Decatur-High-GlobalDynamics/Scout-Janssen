@@ -2,10 +2,7 @@ label {
     text-align: center;
 }
 .form {
-    font-size: 3vw;
-    width: 50vw;
-    height: 50px;
-    margin: 0 auto;
+    font-size: calc(10px + 0.5vw);
     display: block;
     
 }

@@ -1,5 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+html {
+    font-family: 'Heebo-Medium', Fallback, sans-serif !important;
+    
+}
 
 html {
     font-family: 'Heebo-Medium', Fallback, sans-serif !important;

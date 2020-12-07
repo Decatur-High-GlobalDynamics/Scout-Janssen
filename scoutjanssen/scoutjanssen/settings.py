@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +100,35 @@ DATABASES = {
 	'PORT': '',
     }
 }
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED = True;
+LOGIN_REDIRECT_URL = "https://frc4026.com/"
+ACCOUNT_LOGOUT_ON_GET = True;
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '28225922030-o58lbql71scvj1cl55n6bl75fln2dr8f.apps.googleusercontent.com',
+            'secret': config('CLIENT_SECRET_OAUTH_GOOGLE'),
+            'key': ''
+        },
+        "SCOPE": [
+            "profile",
+            "email",
+        ]
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
