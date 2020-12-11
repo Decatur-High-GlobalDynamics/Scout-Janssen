@@ -6,6 +6,7 @@ import datetime
 import requests
 from django.core import serializers
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 from collections import deque
 import random
 import csv
@@ -28,12 +29,12 @@ def submitReport(request): #Main scouting form view
     if(not request.user.is_authenticated):
         return redirect('https://frc4026.com/accounts/google/login/')
     form_class = ScoutingForm
-    if "scouter_id" in request.COOKIES: #This is currently handeled by cookies, but we should switch to an auth method of doing this.
+    if request.user.groups.filter(name = "Scout").exists():
         if(request.method == 'POST'): #If we get a POST request to this website (which is what happens when someone submits a form), use the ScoutingForm ModelForm. 
             form = ScoutingForm(request.POST)
             if form.is_valid():
                 s = form.save(commit=False) #Don't commit so we can change info about it the report. 
-                s.scouter = request.COOKIES["scouter_id"]
+                s.scouter = request.user.username
                 s = form.save() #Commit form to database.
                 data = Report.objects.all()
                 '''
@@ -46,8 +47,7 @@ def submitReport(request): #Main scouting form view
             else:
                 return render(request, 'scoutingtool/newform.html', {'form': form,})
         else: 
-            scouterCookie = request.COOKIES["scouter_id"]
-            schedule = Schedule.objects.filter(scouter = scouterCookie)
+            schedule = Schedule.objects.filter(scouter = request.user.username)
             #schedule = request.COOKIES["scouter_id"]
             schedule = schedule[0]
             return render(request, 'scoutingtool/newform.html', {'form': form_class, 'schedule':schedule})
@@ -180,7 +180,7 @@ def makeSchedule(request):
     event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
-    scouterNames = ["Hayden", "Andrew", "Charlotte", "Otto", "Aubrey", "Kate", "Yana", "Myles", "Joseph", "Louis", "Sara", "Leo", "Carter", "Eric", "Davis", "Savar", "Isaac"]
+    scouterNames = list(User.objects.filter(groups_name="Scout"))
     scouters = {}
     random.shuffle(scouterNames)
     for name in scouterNames:
