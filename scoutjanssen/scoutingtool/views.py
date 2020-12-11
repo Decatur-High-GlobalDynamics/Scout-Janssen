@@ -10,30 +10,37 @@ from collections import deque
 import random
 import csv
 
-
+# TheBlueAlliance Authentication Key for the API
 headers = {'X-TBA-Auth-Key': 'qg4OFGslC8z4zpEdaR8qPA79OUCBCi6dpE1tWLDEZqHARJLhu1GL7s8Aqq84vvJP'}
+
+#Current event key based on the first object in the CurrentScouting table.
 event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0][0]
 
 # Create your views here.
-def schedule(request):
+
+def schedule(request): #User view for schedules
     schedules = Schedule.objects.all()
     if(not request.user.is_authenticated):
         return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/scheduler.html', {'schedules' : schedules})
 
-def submitReport(request):
+def submitReport(request): #Main scouting form view
     if(not request.user.is_authenticated):
         return redirect('https://frc4026.com/accounts/google/login/')
     form_class = ScoutingForm
-    if "scouter_id" in request.COOKIES:
-        if(request.method == 'POST'):
+    if "scouter_id" in request.COOKIES: #This is currently handeled by cookies, but we should switch to an auth method of doing this.
+        if(request.method == 'POST'): #If we get a POST request to this website (which is what happens when someone submits a form), use the ScoutingForm ModelForm. 
             form = ScoutingForm(request.POST)
             if form.is_valid():
-                s = form.save(commit=False)
+                s = form.save(commit=False) #Don't commit so we can change info about it the report. 
                 s.scouter = request.COOKIES["scouter_id"]
-                s = form.save()
+                s = form.save() #Commit form to database.
                 data = Report.objects.all()
-                return render(request, 'scoutingtool/displaytestdata.html', {
+                '''
+                    When submitted, show currently submitted scouter reports. We should change this. Kind of odd. 
+                    At the time, this was the best way to keep track of all of the reports.
+                '''
+                return render(request, 'scoutingtool/displaytestdata.html', { 
                     'data':data,
                 })
             else:
