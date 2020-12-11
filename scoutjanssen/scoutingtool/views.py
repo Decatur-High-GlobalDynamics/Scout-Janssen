@@ -180,7 +180,7 @@ def makeSchedule(request):
     event_key = CurrentScouting.objects.filter(pk = 1).values_list('event_id')[0]
     matches = Match.objects.filter(event_id = event_key).values_list('number', flat=True)
     matches = list(matches)
-    scouterNames = list(User.objects.filter(groups_name="Scout"))
+    scouterNames = list(User.objects.filter(groups__name="Scout"))
     scouters = {}
     random.shuffle(scouterNames)
     for name in scouterNames:
