@@ -33,6 +33,7 @@ def scouterOverride(request):
         response = HttpResponse('')
         if form.is_valid():
             response.set_cookie('scouter_id_override', form.cleaned_data['scouter_id_override'])
+            response = response.redirect("https://frc4026.com/scout/")
             return response
         else:
             return redirect('https://frc4026.com/scout/')
