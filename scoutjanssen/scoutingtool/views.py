@@ -5,7 +5,7 @@ from .forms import ScoutingForm, ScouterForm
 import datetime
 import requests
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from collections import deque
 import random
@@ -30,7 +30,7 @@ def scouterOverride(request):
         return redirect('https://frc4026.com/accounts/google/login/')
     if request.user.groups.filter(name = "Scout").exists() and request.method == 'POST':
         form = ScouterForm(request.POST)
-        response = HttpResponse('https://frc4026.com/scout/')
+        response = HttpResponseRedirect('https://frc4026.com/scout/')
         if form.is_valid():
             response.set_cookie('scouter_id_override', form.cleaned_data['scouter_id_override'])
             return response
