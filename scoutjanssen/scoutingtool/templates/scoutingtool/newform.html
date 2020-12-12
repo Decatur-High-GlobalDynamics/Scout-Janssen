@@ -8,8 +8,6 @@
 	<link rel="stylesheet" href='{% static 'scoutingtool/css/pages.css' %}'>
 	<link rel="stylesheet" href='{% static 'scoutingtool/css/form.css' %}'>
     <link rel="stylesheet" href='{% static 'scoutingtool/css/djangoform.css' %}'>
-	<script src='{% static 'scoutingtool/js/cartesian.js' %}'></script>
-    <script src='{% static 'scoutingtool/js/timers.js' %}'></script>
 	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -31,30 +29,16 @@
         </div>
     {% endfor %}
 {% endif %}
+        
+        <form action="scouter-override/" method="post">
+            {% csrf_token %}
+                {{scouter_override_form.scouter_id_override}}
+        </form>
     <div id="schedule-div">
         <table id="scout-schedule" class="minimalistBlack"></table>
     </div>
 <form action="" method="post">
     {% csrf_token %}
-    	<div class="timer">
-			<div class="table-wrapper" position="center">
-				<table class="fl-table">
-					<thead>
-						<tr>
-							<th>Time on Defense (1)</th>
-							<th>Time Inoperable (2)</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="" name="timeOnDefense" class="timerbold" id="timer0" value="0.0"></input></td>
-							<td><input type="" name="timeInoperable" class="timerbold" id="timer1" value="0.0"></input></td>
-						</tr>
-					<tbody>
-				</table>
-			</div>
-		</div>
-
 
     <div id="scoutbox">
         <div class="prematch">

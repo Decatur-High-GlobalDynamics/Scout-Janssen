@@ -25,16 +25,35 @@ def schedule(request): #User view for schedules
         return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/scheduler.html', {'schedules' : schedules})
 
+def scouterOverride(request):
+    if(not request.user.is_authenticated):
+        return redirect('https://frc4026.com/accounts/google/login/')
+    if request.user.groups.filter(name = "Scout").exists() and request.method == 'POST':
+        form = ScouterForm(request.POST)
+        if form.is_valid():
+            request.set_cookie('scouter_id_override', form.cleaned_data['scouter_id_override'])
+            return redirect('https://frc4026.com/scout/')
+        else:
+            return redirect('https://frc4026.com/scout/')
+    else:
+        return redirect('permissions/error/scout/')
+    
+
 def submitReport(request): #Main scouting form view
     if(not request.user.is_authenticated):
         return redirect('https://frc4026.com/accounts/google/login/')
     form_class = ScoutingForm
+    scouter_override_form_class = ScouterForm
     if request.user.groups.filter(name = "Scout").exists():
         if(request.method == 'POST'): #If we get a POST request to this website (which is what happens when someone submits a form), use the ScoutingForm ModelForm. 
             form = ScoutingForm(request.POST)
             if form.is_valid():
-                s = form.save(commit=False) #Don't commit so we can change info about it the report. 
-                s.scouter = request.user.username
+                s = form.save(commit=False) #Don't commit so we can change info about it the report.
+                scouter_override_cookie = request.COOKIES.get('scouter_id_override')
+                if(scouter_override_cookie):
+                    s.scouter =  scouter_override_cookie
+                else:
+                    s.scouter = request.user.username
                 s = form.save() #Commit form to database.
                 data = Report.objects.all()
                 '''
@@ -45,12 +64,12 @@ def submitReport(request): #Main scouting form view
                     'data':data,
                 })
             else:
-                return render(request, 'scoutingtool/newform.html', {'form': form,})
+                return render(request, 'scoutingtool/newform.html', {'form': form, }) #Pretty sure if this condition is hit, this will error. Someone should fix that.
         else: 
             schedule = Schedule.objects.filter(scouter = request.user.username)
             #schedule = request.COOKIES["scouter_id"]
             schedule = schedule[0]
-            return render(request, 'scoutingtool/newform.html', {'form': form_class, 'schedule':schedule})
+            return render(request, 'scoutingtool/newform.html', {'form': form_class, 'schedule':schedule, 'scouter_override_form': scouter_override_form_class})
     else:
         return redirect('permissions/error/scout/')
 

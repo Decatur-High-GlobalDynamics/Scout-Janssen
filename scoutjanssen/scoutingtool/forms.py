@@ -40,4 +40,4 @@ class ScoutingForm(forms.ModelForm):
         self.fields['match'].queryset = Match.objects.filter(event_id = currentEvent[0]).order_by('number')
 
 class ScouterForm(forms.Form):
-    scouter_id = forms.CharField(label='scouter_id', max_length=20)
+    scouter_id_override = forms.CharField(label='scouter_id_override', max_length=20)
