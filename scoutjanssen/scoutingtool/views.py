@@ -30,10 +30,9 @@ def scouterOverride(request):
         return redirect('https://frc4026.com/accounts/google/login/')
     if request.user.groups.filter(name = "Scout").exists() and request.method == 'POST':
         form = ScouterForm(request.POST)
-        response = HttpResponse('')
+        response = HttpResponse('https://frc4026.com/scout/')
         if form.is_valid():
             response.set_cookie('scouter_id_override', form.cleaned_data['scouter_id_override'])
-            response = response.redirect("https://frc4026.com/scout/")
             return response
         else:
             return redirect('https://frc4026.com/scout/')
