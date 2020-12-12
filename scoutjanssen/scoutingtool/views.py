@@ -25,14 +25,14 @@ def schedule(request): #User view for schedules
         return redirect('https://frc4026.com/accounts/google/login/')
     return render(request, 'scoutingtool/scheduler.html', {'schedules' : schedules})
 
-def scouterOverride(request):
+def scouterOverride(request, response):
     if(not request.user.is_authenticated):
         return redirect('https://frc4026.com/accounts/google/login/')
     if request.user.groups.filter(name = "Scout").exists() and request.method == 'POST':
         form = ScouterForm(request.POST)
         if form.is_valid():
-            request.set_cookie('scouter_id_override', form.cleaned_data['scouter_id_override'])
-            return redirect('https://frc4026.com/scout/')
+            response.set_cookie('scouter_id_override', form.cleaned_data['scouter_id_override'])
+            return response
         else:
             return redirect('https://frc4026.com/scout/')
     else:
