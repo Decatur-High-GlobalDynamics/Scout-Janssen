@@ -52,7 +52,7 @@ def submitReport(request): #Main scouting form view
             schedule = schedule[0]
             return render(request, 'scoutingtool/newform.html', {'form': form_class, 'schedule':schedule})
     else:
-        return redirect('scouter')
+        return redirect('permissions/error/scout/')
 
 def removeDuplicates(request):
     if(not request.user.is_authenticated):
