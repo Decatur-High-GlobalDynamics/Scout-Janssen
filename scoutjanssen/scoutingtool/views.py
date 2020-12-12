@@ -54,31 +54,6 @@ def submitReport(request): #Main scouting form view
     else:
         return redirect('scouter')
 
-
-def scouter(request):
-    if(not request.user.is_authenticated):
-        return redirect('https://frc4026.com/accounts/google/login/')
-    form = ScouterForm(event_key)
-    if "scouter_id" in request.COOKIES:
-        response = render(request, 'scoutingtool/selectScout.html', {
-            'scouter_id': "true",
-        })
-    else:
-        response = render(request, 'scoutingtool/selectScout.html', {
-            'scouter_id': "false",
-        })
-    if(request.method == 'POST'):
-        form = ScouterForm(request.POST)
-        if form.is_valid():
-            new_scouter_id = request.POST.get('scouter_id', '')
-            response = redirect('submitReport')
-            response.set_cookie(key='scouter_id', value=new_scouter_id)
-            return response
-        else:
-            return render(request, 'scoutingtool/selectScout.html', {})
-    else:
-        return response
-
 def removeDuplicates(request):
     if(not request.user.is_authenticated):
         return redirect('https://frc4026.com/accounts/google/login/')
@@ -87,7 +62,8 @@ def removeDuplicates(request):
     bad_reports.delete()
     return render(request, 'scoutingtool/', {})
 
-
+def scoutPermissionFail(request):
+    return render(request, 'scoutingtool/scoutPermissionFail.html')
    
 def syncDb(request):
     if(not request.user.is_authenticated):
