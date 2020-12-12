@@ -66,9 +66,12 @@ def submitReport(request): #Main scouting form view
                 })
             else:
                 return render(request, 'scoutingtool/newform.html', {'form': form, }) #Pretty sure if this condition is hit, this will error. Someone should fix that.
-        else: 
-            schedule = Schedule.objects.filter(scouter = request.user.username)
-            #schedule = request.COOKIES["scouter_id"]
+        else:
+            scouter_override_cookie = request.COOKIES.get('scouter_id_override')
+            if(scouter_override_cookie):
+                schedule = Schedule.objects.filter(scouter__iexact = scouter_override_cookie)
+            else:
+                schedule = Schedule.objects.filter(scouter__iexact = request.user.username)
             schedule = schedule[0]
             return render(request, 'scoutingtool/newform.html', {'form': form_class, 'schedule':schedule, 'scouter_override_form': scouter_override_form_class})
     else:

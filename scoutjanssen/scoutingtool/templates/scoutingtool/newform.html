@@ -29,12 +29,14 @@
         </div>
     {% endfor %}
 {% endif %}
-        
-        <form action="scouter-override/" method="post">
-            {% csrf_token %}
-                {{scouter_override_form.scouter_id_override}}
-                <input type="submit" value="Submit" />
-        </form>
+        <div id="scouter-override-box">
+            <form action="scouter-override/" method="post">
+                {% csrf_token %}
+                    <label for="{{scouter_override_form.scouter_id_override.id_for_label}}">Override Scouter: </label>
+                    {{scouter_override_form.scouter_id_override}}
+                    <input type="submit" value="Submit" />
+            </form>
+        </div>
     <div id="schedule-div">
         <table id="scout-schedule" class="minimalistBlack"></table>
     </div>
