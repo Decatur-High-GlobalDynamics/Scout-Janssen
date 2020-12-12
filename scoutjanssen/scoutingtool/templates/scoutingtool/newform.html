@@ -33,6 +33,7 @@
         <form action="scouter-override/" method="post">
             {% csrf_token %}
                 {{scouter_override_form.scouter_id_override}}
+                <input type="submit" value="Submit" />
         </form>
     <div id="schedule-div">
         <table id="scout-schedule" class="minimalistBlack"></table>
